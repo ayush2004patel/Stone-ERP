@@ -1,0 +1,168 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-19 14:29:05.223297",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_wyiy",
+  "prep_date",
+  "baps_project",
+  "project_name",
+  "column_break_dsal",
+  "stone_type",
+  "main_part",
+  "sub_part",
+  "column_break_uoie",
+  "form_number",
+  "total_volume",
+  "cutting_region",
+  "section_break_pnlg",
+  "stone_details",
+  "section_break_vvov",
+  "polishing",
+  "dry_fitting",
+  "column_break_ddgf",
+  "carving",
+  "chemicaling"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_details",
+   "fieldtype": "Table",
+   "label": "Stone Details",
+   "options": "Size List Creation Item"
+  },
+  {
+   "fieldname": "section_break_vvov",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing",
+   "fieldtype": "Check",
+   "label": "Polishing Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "dry_fitting",
+   "fieldtype": "Check",
+   "label": "Dry Fitting Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "carving",
+   "fieldtype": "Check",
+   "label": "Carving Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "chemicaling",
+   "fieldtype": "Check",
+   "label": "Chemical Required"
+  },
+  {
+   "fieldname": "column_break_ddgf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wyiy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "prep_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Prep Date"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fetch_from": "baps_project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "stone_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Main Part",
+   "options": "Main Part"
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "label": "Sub Part",
+   "options": "Sub Part"
+  },
+  {
+   "fieldname": "form_number",
+   "fieldtype": "Link",
+   "label": "Form Number",
+   "options": "Size List",
+   "unique": 1
+  },
+  {
+   "fieldname": "total_volume",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Volume(CFT)"
+  },
+  {
+   "fieldname": "cutting_region",
+   "fieldtype": "Link",
+   "label": "Cutting Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "column_break_dsal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uoie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pnlg",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-22 12:01:28.939153",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Creation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

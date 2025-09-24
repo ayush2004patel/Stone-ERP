@@ -242,3 +242,55 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+
+
+
+# # hooks.py
+# doc_events = {
+#     "Size List": {
+#         "validate": "baps.baps.doctype.size_list.size_list.validate_size_list"
+#     }
+# }
+
+
+doc_events = {
+    "Block Selection": {
+        # "validate": "baps.baps.doctype.block_selection.block_selection.validate",
+        # "on_update_after_submit": "baps.baps.doctype.block_selection.block_selection.on_update_after_submit",
+        # "on_trash": "baps.baps.doctype.block_selection.block_selection.on_trash"
+    },
+    "Block Selection Detail": {
+        "validate": "baps.baps.doctype.block_selection_detail.block_selection_detail.validate"
+    },
+    "Inspection": {
+        "validate": "baps.baps.doctype.inspection.inspection.validate",
+        "on_update_after_submit": "baps.baps.doctype.inspection.inspection.on_update_after_submit"
+    },
+    "Cutting Planning": {
+        "validate": "baps.baps.doctype.cutting_planning.cutting_planning.validate"
+    },
+    "Cutting Plan Final": {
+        "validate": "baps.baps.doctype.cutting_plan_final.cutting_plan_final.validate"
+    },
+    "Pre Carving QC": {
+        "validate": "baps.baps.doctype.pre_carving_qc.pre_carving_qc.validate",
+        "on_update_after_submit": "baps.baps.doctype.pre_carving_qc.pre_carving_qc.on_update_after_submit"
+    },
+    "Carving QC": {
+        "validate": "baps.baps.doctype.carving_qc.carving_qc.validate",
+        "on_update_after_submit": "baps.baps.doctype.carving_qc.carving_qc.on_update_after_submit"
+    },
+    "Size List Creation": {
+        "autoname": "baps.baps.doctype.size_list_creation.size_list_creation.autoname",
+        "validate": "baps.baps.doctype.size_list_creation.size_list_creation.validate"
+    },
+    "Billing Type": {
+        "autoname": "baps.baps.doctype.billing_type.billing_type.autoname",
+        "validate": "baps.baps.doctype.billing_type.billing_type.validate"
+    }
+}
+
+
+app_include_js = [
+    "/assets/baps/js/common.js"
+]

@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-03 17:38:28.131942",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "baps_project",
+  "stone_code",
+  "cut",
+  "ignore"
+ ],
+ "fields": [
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "description": " fetch Auto and also typing it ",
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Code"
+  },
+  {
+   "default": "0",
+   "fieldname": "cut",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Cut"
+  },
+  {
+   "default": "0",
+   "fieldname": "ignore",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Ignore"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-03 17:41:20.259889",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Execution Process",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,178 @@
+{
+ "actions": [],
+ "autoname": "TRANS-REC-.####",
+ "creation": "2025-08-29 12:49:49.788947",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "site",
+  "gate_pass_bookno",
+  "gate_pass_no",
+  "wt_of_material",
+  "column_break_ftbm",
+  "date",
+  "section_break_mfov",
+  "column_break_gwvv",
+  "gate_pass_book_no",
+  "column_break_mwta",
+  "gate_passno",
+  "column_break_qbmw",
+  "from_site",
+  "column_break_dnvb",
+  "to_site",
+  "section_break_tpft",
+  "transportation_status_r",
+  "additional_material_receiver",
+  "section_break_vbpu",
+  "additional_items",
+  "missing_items",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "depends_on": "eval:doc.additional_material_receiver == 1",
+   "fieldname": "additional_items",
+   "fieldtype": "Table",
+   "label": "Additional Material Receiver",
+   "options": "Additional Material Received"
+  },
+  {
+   "fieldname": "missing_items",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Missing Items",
+   "options": "Missing Material List"
+  },
+  {
+   "fetch_from": "transport_sender_reference.to_site",
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "wt_of_material",
+   "fieldtype": "Data",
+   "label": "Wt. of Material"
+  },
+  {
+   "fieldname": "column_break_ftbm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gate_pass_no",
+   "fieldtype": "Link",
+   "label": "Gate Pass No",
+   "options": "Gate Pass No"
+  },
+  {
+   "fieldname": "section_break_vbpu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_mfov",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "transport_sender_reference.from_site",
+   "fieldname": "from_site",
+   "fieldtype": "Link",
+   "label": "From Site",
+   "options": "Site"
+  },
+  {
+   "fetch_from": "transport_sender_reference.to_site",
+   "fieldname": "to_site",
+   "fieldtype": "Link",
+   "label": "To Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "transportation_status_r",
+   "fieldtype": "Table",
+   "label": "Tansportation Status R",
+   "options": "Transportation Status R"
+  },
+  {
+   "fieldname": "gate_pass_bookno",
+   "fieldtype": "Link",
+   "label": "Gate Pass BookNo",
+   "options": "Gate Pass BookNo"
+  },
+  {
+   "fieldname": "column_break_dnvb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gwvv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "gate_pass_bookno.gate_pass_bookno",
+   "fieldname": "gate_pass_book_no",
+   "fieldtype": "Data",
+   "label": "Gate Pass Book NO"
+  },
+  {
+   "fieldname": "column_break_mwta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "gate_pass_no.gate_pass_no",
+   "fieldname": "gate_passno",
+   "fieldtype": "Data",
+   "label": "Gate PassNo"
+  },
+  {
+   "fieldname": "section_break_tpft",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qbmw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "additional_material_receiver",
+   "fieldtype": "Check",
+   "label": "Additional Material Receiver"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-18 17:44:13.104413",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transportation Receiver",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

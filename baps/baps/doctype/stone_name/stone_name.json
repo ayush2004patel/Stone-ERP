@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-08 17:14:22.606955",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "main_part",
+  "sub_part",
+  "stone_name",
+  "stone_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_name",
+   "fieldtype": "Data",
+   "label": "Stone Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "label": "Main Part",
+   "options": "Main Part"
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "label": "Sub Part",
+   "options": "Sub Part"
+  },
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "label": "Stone Code"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-19 10:52:49.608161",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Stone Name",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

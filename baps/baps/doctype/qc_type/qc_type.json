@@ -1,0 +1,47 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:qc_type",
+ "creation": "2025-09-01 17:41:05.175320",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "qc_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "qc_type",
+   "fieldtype": "Data",
+   "label": "QC Type",
+   "unique": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-01 21:34:28.990966",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Qc Type",
+ "naming_rule": "By fieldname",
+ "owner": "admin@gmail.com",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

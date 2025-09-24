@@ -1,0 +1,181 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DIRECT-CUT-.####",
+ "creation": "2025-08-29 15:42:04.101249",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_number",
+  "trade_partner",
+  "party",
+  "trade_partner_site",
+  "column_break_dxtm",
+  "date",
+  "region",
+  "site",
+  "size_list_creation",
+  "section_break_ndkl",
+  "size_list_reference",
+  "invoice_number",
+  "invoice_date",
+  "column_break_mdkr",
+  "unit_price",
+  "total_amount",
+  "section_break_pudg",
+  "stone_details",
+  "section_break_pgwb",
+  "tax_type",
+  "transport_reference",
+  "column_break_ejcl",
+  "tax_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_number",
+   "fieldtype": "Data",
+   "label": "Stone Number"
+  },
+  {
+   "fieldname": "trade_partner",
+   "fieldtype": "Link",
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_dxtm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "label": "Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "section_break_ndkl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "size_list_reference",
+   "fieldtype": "Link",
+   "label": "Size List",
+   "options": "Size List"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Invoice No"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date"
+  },
+  {
+   "fieldname": "column_break_mdkr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unit_price",
+   "fieldtype": "Currency",
+   "label": "Unit Price"
+  },
+  {
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount"
+  },
+  {
+   "fieldname": "section_break_pgwb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_type",
+   "fieldtype": "Data",
+   "label": "Tax Type"
+  },
+  {
+   "fieldname": "transport_reference",
+   "fieldtype": "Link",
+   "label": "Transport Ref",
+   "options": "Transportation Sender"
+  },
+  {
+   "fieldname": "column_break_ejcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tax_amount",
+   "fieldtype": "Currency",
+   "label": "Tax Amount"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fetch_from": "trade_partner.trade_partner_site",
+   "fieldname": "trade_partner_site",
+   "fieldtype": "Link",
+   "label": "Trade Patner SIte",
+   "options": "Connection"
+  },
+  {
+   "fieldname": "section_break_pudg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stone_details",
+   "fieldtype": "Table",
+   "label": "Stone Details ",
+   "options": "Size List Details"
+  },
+  {
+   "fieldname": "size_list_creation",
+   "fieldtype": "Link",
+   "label": "Size List Creation",
+   "options": "Size List"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-16 13:46:40.150458",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Direct Cut Stone Purchase",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

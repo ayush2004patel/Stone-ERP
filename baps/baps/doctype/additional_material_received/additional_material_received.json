@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 14:06:15.250879",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "baps_project",
+  "material_type",
+  "material_number",
+  "block_number",
+  "stone_number",
+  "box_number",
+  "volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Block\nStone\nBox"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Block ID"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Volume"
+  },
+  {
+   "fieldname": "stone_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Stone ID"
+  },
+  {
+   "fieldname": "box_number",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Box ID"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "material_number",
+   "fieldtype": "Data",
+   "label": "Material Number"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-10 15:34:58.108669",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Additional Material Received",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

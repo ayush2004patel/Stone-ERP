@@ -1,0 +1,217 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "CUT-P-.#####",
+ "creation": "2025-08-13 21:28:02.528409",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "block_number",
+  "size_list_creation",
+  "status",
+  "column_break_qbom",
+  "form_no",
+  "trial_number",
+  "section_break_xupq",
+  "site",
+  "column_break_lybm",
+  "stone_type",
+  "column_break_menc",
+  "block_volume",
+  "section_break_lete",
+  "project",
+  "column_break_lsxq",
+  "planning_date",
+  "machine_no",
+  "column_break_xqdt",
+  "planning_status",
+  "end_date",
+  "section_break_xrcd",
+  "cutting_plan_details",
+  "section_break_kqup",
+  "total_stone_volume",
+  "column_break_hgwu",
+  "wastage_percentage",
+  "section_break_icmk",
+  "cutting_plan_final"
+ ],
+ "fields": [
+  {
+   "fieldname": "planning_date",
+   "fieldtype": "Date",
+   "label": "Planning Date"
+  },
+  {
+   "fetch_from": "size_list_creation.form_number",
+   "fieldname": "form_no",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Form No"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "M/C No"
+  },
+  {
+   "fieldname": "column_break_xqdt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "size_list_creation.total_volume",
+   "fieldname": "block_volume",
+   "fieldtype": "Data",
+   "label": "Block Volume"
+  },
+  {
+   "fieldname": "total_stone_volume",
+   "fieldtype": "Float",
+   "label": "Total Stone Volume",
+   "precision": "2"
+  },
+  {
+   "fieldname": "wastage_percentage",
+   "fieldtype": "Percent",
+   "label": "Wastage %"
+  },
+  {
+   "fieldname": "planning_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Planning Status",
+   "options": "Draft\nPlanned\nIn Progress\nCompleted"
+  },
+  {
+   "fieldname": "section_break_xrcd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cutting_plan_details",
+   "fieldtype": "Table",
+   "label": "Cutting Plan Details",
+   "options": "Cutting Plan Details"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "stone_type",
+   "fieldtype": "Link",
+   "label": "Block/Stone Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "column_break_qbom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xupq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lybm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_menc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_lete",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "section_break_kqup",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hgwu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lsxq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "section_break_icmk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cutting_plan_final",
+   "fieldtype": "Table",
+   "label": "Cutting Plan Final",
+   "options": "Cutting Plan Final"
+  },
+  {
+   "fieldname": "size_list_creation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Size List",
+   "options": "Size List"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "draft\nfinal"
+  },
+  {
+   "fieldname": "trial_number",
+   "fieldtype": "Data",
+   "label": "Trial Number"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-16 13:46:40.376929",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Planning",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

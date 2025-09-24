@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 12:58:00.906907",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_type",
+  "block_number",
+  "stone_number",
+  "box_number",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Block\nStone\nBox"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block ID"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Received\nMissing\nDamaged"
+  },
+  {
+   "fieldname": "stone_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone ID"
+  },
+  {
+   "fieldname": "box_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Box ID"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-01 07:06:56.088295",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Material Status Table R",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

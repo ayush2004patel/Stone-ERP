@@ -1,0 +1,239 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TRANS-SND-.####",
+ "creation": "2025-08-29 12:33:17.271806",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_jvcy",
+  "gate_pass_bookno",
+  "gate_pass_no",
+  "from_site",
+  "to_site",
+  "column_break_cgtg",
+  "date",
+  "sender_name",
+  "vehicle_service_provider",
+  "vehicle_number",
+  "own_vehicle",
+  "block_selection",
+  "cutting_execution",
+  "section_break_bxox",
+  "driver_name",
+  "column_break_qxyt",
+  "driver_number",
+  "column_break_xtgv",
+  "column_break_tgre",
+  "lot_no",
+  "section_break_encj",
+  "baps_project",
+  "column_break_nskb",
+  "material_type",
+  "column_break_uakc",
+  "show_items",
+  "section_break_spbc",
+  "transport_material_type",
+  "section_break_cieb",
+  "is_received",
+  "column_break_rjoi",
+  "receiver_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "section_break_bxox",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "from_site",
+   "fieldtype": "Link",
+   "label": "From Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "column_break_xtgv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_site",
+   "fieldtype": "Link",
+   "label": "To Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "section_break_jvcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Link",
+   "label": "Vehicle /Container Number",
+   "options": "Vehicle Service Provider"
+  },
+  {
+   "fieldname": "driver_name",
+   "fieldtype": "Data",
+   "label": "Driver Name"
+  },
+  {
+   "fieldname": "column_break_cgtg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sender_name",
+   "fieldtype": "Data",
+   "label": "Sender"
+  },
+  {
+   "fieldname": "gate_pass_no",
+   "fieldtype": "Link",
+   "label": "Gate Pass No",
+   "options": "Gate Pass No"
+  },
+  {
+   "fieldname": "section_break_cieb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_received",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Is Received"
+  },
+  {
+   "fieldname": "receiver_reference",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Receiver Ref",
+   "options": "Transportation Receiver"
+  },
+  {
+   "fieldname": "vehicle_service_provider",
+   "fieldtype": "Link",
+   "label": "Vehicle Service Provider",
+   "options": "Vehicle Service Provider"
+  },
+  {
+   "fieldname": "driver_number",
+   "fieldtype": "Phone",
+   "label": "Driver Number"
+  },
+  {
+   "fieldname": "gate_pass_bookno",
+   "fieldtype": "Link",
+   "label": "Gate Pass BookNo",
+   "options": "Gate Pass BookNo"
+  },
+  {
+   "fieldname": "column_break_rjoi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_spbc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "transport_material_type",
+   "fieldtype": "Table",
+   "label": "Transport Material Type",
+   "options": "Transport Material Table"
+  },
+  {
+   "description": "fetch from the trasnporttaion sender via link from transporter  reciver",
+   "fieldname": "block_selection",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Block Selection",
+   "options": "Block Selection"
+  },
+  {
+   "fieldname": "column_break_qxyt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Data",
+   "label": "Lot No"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "show_items",
+   "fieldtype": "Button",
+   "label": "Show Items"
+  },
+  {
+   "fieldname": "cutting_execution",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Cutting Execution",
+   "options": "Cutting Execution"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "label": "Item Type",
+   "options": "\nBlock\nStone\nBox"
+  },
+  {
+   "fieldname": "own_vehicle",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Own Vehicle",
+   "options": "Own Vehicle"
+  },
+  {
+   "fieldname": "section_break_encj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nskb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uakc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tgre",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-17 12:13:09.352589",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transportation Sender",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

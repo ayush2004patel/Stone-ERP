@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 12:48:23.684211",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "box_number",
+  "stone_count",
+  "size_list_reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "box_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Box Number"
+  },
+  {
+   "fieldname": "stone_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "No. of Stones"
+  },
+  {
+   "fieldname": "size_list_reference",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Size List",
+   "options": "Size List"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-16 13:46:39.852463",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transport Box List",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "CUT-EXE-.#####",
+ "creation": "2025-08-13 21:16:00.871705",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "block_number",
+  "site",
+  "machine_no",
+  "cutting_planning",
+  "column_break_hvip",
+  "execution_date",
+  "form_no",
+  "block_volume",
+  "section_break_qvhr",
+  "cutting_exceution_process",
+  "residue_table"
+ ],
+ "fields": [
+  {
+   "fieldname": "cutting_planning",
+   "fieldtype": "Link",
+   "label": "Cutting Planning",
+   "options": "Cutting Planning"
+  },
+  {
+   "fieldname": "execution_date",
+   "fieldtype": "Date",
+   "label": "Execution Date"
+  },
+  {
+   "fieldname": "column_break_hvip",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_qvhr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "residue_table",
+   "fieldtype": "Table",
+   "label": "Residue Table",
+   "options": "Cutting Residue Details"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "label": "Block Number"
+  },
+  {
+   "fieldname": "machine_no",
+   "fieldtype": "Data",
+   "label": "Machine No"
+  },
+  {
+   "fieldname": "form_no",
+   "fieldtype": "Data",
+   "label": "Form No"
+  },
+  {
+   "fetch_from": "cutting_planning.block_volume",
+   "fieldname": "block_volume",
+   "fieldtype": "Data",
+   "label": "Block Volume"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "cutting_exceution_process",
+   "fieldtype": "Table",
+   "label": "Cutting Execution Process",
+   "options": "Cutting Execution Process"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-06 14:17:34.255912",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Execution",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

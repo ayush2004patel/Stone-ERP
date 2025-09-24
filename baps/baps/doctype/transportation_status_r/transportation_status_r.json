@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-01 15:53:43.959503",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "baps_project",
+  "material_type",
+  "material_number",
+  "status",
+  "site"
+ ],
+ "fields": [
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "\nBlock\nStone\nBox"
+  },
+  {
+   "fieldname": "material_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Material Number"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "\nReceived\nNot in this\nSend to site"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site",
+   "mandatory_depends_on": "eval:doc.status == 'Send to site'",
+   "options": "Site",
+   "read_only_depends_on": "eval:doc.status == 'Received' || doc.status == 'Not in this'"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-10 15:34:33.930969",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transportation Status R",
+ "owner": "admin@gmail.com",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

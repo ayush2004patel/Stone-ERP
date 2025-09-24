@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-17 15:15:34.284163",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "guarantor_name",
+  "contact_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "guarantor_name",
+   "fieldtype": "Data",
+   "label": "Guarantor Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "Contact Number"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-17 16:17:00.208747",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Guarantors",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-17 14:58:16.061739",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_utpy",
+  "applicant_name",
+  "loan_amount",
+  "interest_rate",
+  "status",
+  "total_installments",
+  "installments",
+  "guarantors",
+  "collaterals"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_utpy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "applicant_name",
+   "fieldtype": "Data",
+   "label": "Applicant Name"
+  },
+  {
+   "fieldname": "loan_amount",
+   "fieldtype": "Currency",
+   "label": "Loan Amount"
+  },
+  {
+   "fieldname": "interest_rate",
+   "fieldtype": "Percent",
+   "label": "Interest Rate"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nSubmitted\nApproved\nRejected"
+  },
+  {
+   "fieldname": "total_installments",
+   "fieldtype": "Currency",
+   "label": "Total Installments"
+  },
+  {
+   "fieldname": "installments",
+   "fieldtype": "Table",
+   "label": "Installments",
+   "options": "Installments"
+  },
+  {
+   "fieldname": "collaterals",
+   "fieldtype": "Table",
+   "label": "Collaterals",
+   "options": "Collaterals"
+  },
+  {
+   "fieldname": "guarantors",
+   "fieldtype": "Table",
+   "label": "Guarantors",
+   "options": "Guarantors"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-09-17 16:03:26.069290",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Loan Application",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

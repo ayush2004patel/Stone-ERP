@@ -1,0 +1,182 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-24 11:39:57.294972",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "prep_date",
+  "baps_project",
+  "project_name",
+  "column_break_kini",
+  "material_type",
+  "main_part",
+  "sub_part",
+  "column_break_wehb",
+  "form_number",
+  "cutting_region",
+  "section_break_mheq",
+  "polishing_required",
+  "dry_fitting_required",
+  "column_break_jzmk",
+  "carving_required",
+  "chemical_required",
+  "section_break_fyst",
+  "stone_details",
+  "section_break_fyte",
+  "checked_by",
+  "data_tilw",
+  "column_break_jwqt",
+  "approved_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "prep_date",
+   "fieldtype": "Date",
+   "label": "Prep Date"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "column_break_kini",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "label": "Main Part",
+   "options": "Main Part"
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "label": "Sub Part",
+   "options": "Sub Part"
+  },
+  {
+   "fieldname": "column_break_wehb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "form_number",
+   "fieldtype": "Link",
+   "label": "Form Number",
+   "options": "Size List",
+   "unique": 1
+  },
+  {
+   "fieldname": "cutting_region",
+   "fieldtype": "Link",
+   "label": "Cutting Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "section_break_mheq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing_required",
+   "fieldtype": "Check",
+   "label": "Polishing Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "dry_fitting_required",
+   "fieldtype": "Check",
+   "label": "Dry Fitting Required"
+  },
+  {
+   "fieldname": "column_break_jzmk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "carving_required",
+   "fieldtype": "Check",
+   "label": "Carving Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "chemical_required",
+   "fieldtype": "Check",
+   "label": "Chemical Required"
+  },
+  {
+   "fieldname": "section_break_fyst",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stone_details",
+   "fieldtype": "Table",
+   "label": "Stone Details",
+   "options": "Size List Details"
+  },
+  {
+   "fieldname": "section_break_fyte",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "Checked By",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "checked_by.employee_name",
+   "fieldname": "data_tilw",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "column_break_jwqt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "approved_date",
+   "fieldtype": "Date",
+   "label": "Approved Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-24 16:16:19.979961",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "SIze List Generation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

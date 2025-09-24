@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-13 20:59:21.308551",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project",
+  "stone_code",
+  "l1",
+  "l2",
+  "column_break_pzpi",
+  "b1",
+  "b2",
+  "h1",
+  "h2",
+  "column_break_djww",
+  "volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_pzpi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_djww",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Code"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Vol"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-05 11:49:16.336231",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Plan Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

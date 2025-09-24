@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 11:57:52.931263",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_name",
+  "stone_code",
+  "range",
+  "column_break_kdid",
+  "l1",
+  "l2",
+  "b1",
+  "column_break_guct",
+  "b2",
+  "h1",
+  "h2",
+  "volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stone Name",
+   "options": "Stone Name"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume (CFT)"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "L1",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "B1",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "H1",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2",
+   "non_negative": 1,
+   "precision": "2"
+  },
+  {
+   "fetch_from": "stone_name.stone_code",
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Code "
+  },
+  {
+   "fieldname": "range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Range"
+  },
+  {
+   "fieldname": "column_break_kdid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_guct",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-24 14:36:33.325928",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,135 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "BAPS-PROJ-.####",
+ "creation": "2025-08-29 11:46:43.964225",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "project_name",
+  "column_break_mdyp",
+  "site",
+  "project_section",
+  "start_date",
+  "column_break_baps_proj",
+  "expected_end_date",
+  "status",
+  "section_break_ouvg",
+  "dry_fitting",
+  "column_break_jqqi",
+  "chemical",
+  "polishing",
+  "column_break_okjj",
+  "client_inspection"
+ ],
+ "fields": [
+  {
+   "fieldname": "project_section",
+   "fieldtype": "Section Break",
+   "label": "Project Details"
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "column_break_baps_proj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "expected_end_date",
+   "fieldtype": "Date",
+   "label": "Expected End Date"
+  },
+  {
+   "default": "Planned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Planned\nIn Progress\nCompleted\nOn Hold\nCancelled"
+  },
+  {
+   "fieldname": "column_break_mdyp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ouvg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "dry_fitting",
+   "fieldtype": "Check",
+   "label": "Dry Fitting"
+  },
+  {
+   "fieldname": "column_break_jqqi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "chemical",
+   "fieldtype": "Check",
+   "label": "Chemical"
+  },
+  {
+   "fieldname": "column_break_okjj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "client_inspection",
+   "fieldtype": "Check",
+   "label": "Client Inspection"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing",
+   "fieldtype": "Check",
+   "label": "Polishing"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-16 11:29:17.601748",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Baps Project",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

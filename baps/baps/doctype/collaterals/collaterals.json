@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-17 15:15:54.161820",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "collateral_type",
+  "value"
+ ],
+ "fields": [
+  {
+   "fieldname": "collateral_type",
+   "fieldtype": "Data",
+   "label": "Collateral Type"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Currency",
+   "label": "Value"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-17 15:22:34.311776",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Collaterals",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

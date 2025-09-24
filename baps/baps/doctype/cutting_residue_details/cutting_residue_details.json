@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-14 10:13:36.379817",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "suffix",
+  "column_break_mwtn",
+  "l1",
+  "column_break_mdwl",
+  "l2",
+  "column_break_mwao",
+  "b1",
+  "column_break_fala",
+  "b2",
+  "column_break_aijp",
+  "h1",
+  "column_break_akun",
+  "h2",
+  "section_break_umug",
+  "usable_status"
+ ],
+ "fields": [
+  {
+   "description": "Auto genearte ",
+   "fieldname": "suffix",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Suffix"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H1",
+   "precision": "2"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2",
+   "precision": "2"
+  },
+  {
+   "fieldname": "usable_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Usable Status",
+   "options": "Usable\nWaste\nTo Decide"
+  },
+  {
+   "fieldname": "column_break_mwtn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mdwl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mwao",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fala",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_aijp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_akun",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_umug",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-05 12:24:11.211932",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Residue Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

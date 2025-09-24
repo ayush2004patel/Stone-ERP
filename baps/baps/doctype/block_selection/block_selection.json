@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "BKSL-.####",
+ "creation": "2025-08-29 12:20:42.605206",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "trade_partner",
+  "trade_partner_site",
+  "party",
+  "column_break_crfq",
+  "baps_project",
+  "project_name",
+  "material_type",
+  "column_break_bknz",
+  "status",
+  "selected_by",
+  "selected_by_name",
+  "invoice_after_receipt",
+  "last_block_number",
+  "last_blocknumber",
+  "section_break_sqot",
+  "block_selection_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "trade_partner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Link",
+   "label": "Party",
+   "options": "Party"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_after_receipt",
+   "fieldtype": "Check",
+   "label": "Invoice to be paid after block receipt"
+  },
+  {
+   "fieldname": "column_break_bknz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_sqot",
+   "fieldtype": "Section Break",
+   "label": "details"
+  },
+  {
+   "fieldname": "block_selection_details",
+   "fieldtype": "Table",
+   "label": "Block Selection Details",
+   "options": "Block Selection Detail"
+  },
+  {
+   "fetch_from": "trade_partner.trade_partner_site",
+   "fieldname": "trade_partner_site",
+   "fieldtype": "Link",
+   "label": "Trade partner site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "selected_by",
+   "fieldtype": "Link",
+   "label": "Selected By",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "selected_by.employee_name",
+   "fieldname": "selected_by_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Draft\nSubmitted"
+  },
+  {
+   "fetch_from": "baps_project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "column_break_crfq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_block_number",
+   "fieldtype": "Button",
+   "label": "Last Block Number"
+  },
+  {
+   "fieldname": "last_blocknumber",
+   "fieldtype": "Data"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-23 15:01:39.902933",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Block Selection",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

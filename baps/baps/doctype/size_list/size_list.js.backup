@@ -1,0 +1,1085 @@
+// ============================
+// Size List - Simple Approval Workflow
+// ============================
+//             }
+//             for (let i = start; i <= end; i++) numbers.push(i);
+//         } else if (input.indexOf(',') !== -1) {
+//             numbers = input.split(',').map(s => cint(s.trim())).filter(n => !isNaN(n));
+//         } else {
+//             let n = cint(input);
+//             if (!isNaN(n)) numbers = [n];
+//         }
+
+//         numbers = [...new Set(numbers)].sort((a,b) => a-b);
+//         if (numbers.length === 0) return;
+
+//         // First row must have stone_code
+//         if (!row.stone_code) {
+//             frappe.show_alert({message: __("Please enter Stone Code in the first row before using range"), indicator: "red"});
+//             return;
+//         }
+
+//         // let match = row.stone_code.match(/^(.*?)(\d+)$/);
+//         // if (!match) {
+//         //     frappe.show_alert({message: __("Stone Code must end with numbers, e.g. ABCDE001"), indicator: "red"});
+//         //     return;
+//         // }
+
+//         let prefix = match[1], num_width = match[2].length;
+
+//         // Clear range field
+//         frappe.model.set_value(cdt, cdn, "range", "");
+
+//         let duplicate_codes = [];
+
+//         numbers.forEach((n, idx) => {
+//             let stone_code = prefix + String(n).padStart(num_width, "0");
+
+//             let exists = frm.doc.stone_details.some(r => r.stone_code === stone_code || r.serial_no === n);
+//             if (exists) {
+//                 duplicate_codes.push(stone_code);
+//                 return;
+//             }
+
+//             let target_row;
+//             if (idx === 0) {
+//                 target_row = row;
+//                 target_row.stone_code = stone_code;
+//                 target_row.serial_no = n;
+//             } else {
+//                 target_row = frm.add_child("stone_details");
+//                 Object.keys(row).forEach(f => {
+//                     if (!["name","idx","doctype","stone_code","range","serial_no"].includes(f)) {
+//                         target_row[f] = row[f];
+//                     }
+//                 });
+//                 target_row.stone_code = stone_code;
+//                 target_row.serial_no = n;
+//             }
+
+//             // Auto-inherit parent-level process flags (optional, for display/reference)
+//             if (frm.doc.chemical !== undefined) target_row.chemical = frm.doc.chemical;
+//             if (frm.doc.dry_fitting !== undefined) target_row.dry_fitting = frm.doc.dry_fitting;
+//             if (frm.doc.polishing !== undefined) target_row.polishing = frm.doc.polishing;
+
+//             calculate_volume(frm, target_row.doctype, target_row.name);
+//         });
+
+//         if (duplicate_codes.length) {
+//             frappe.show_alert({
+//                 message: __("Skipped duplicates: ") + duplicate_codes.join(", "),
+//                 indicator: "orange"
+//             });
+//         }
+
+//         frm.refresh_field("stone_details");
+//     },
+
+//     // --- Stone Code handler (auto-fill sequentially after manual entry) ---
+//     stone_code: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (!row || !row.stone_code) return;
+
+//         // let match = row.stone_code.match(/^(.*?)(\d+)$/);
+//         // if (!match) {
+//         //     frappe.msgprint(__("Stone Code must end with numbers, e.g. ABCDE001"));
+//         //     return;
+//         // }
+
+//         let prefix = match[1];
+//         let base_num = cint(match[2]);
+//         let num_width = match[2].length;
+//         let next_num = base_num + 1;
+
+//         let all = frm.doc.stone_details || [];
+//         let startIndex = all.findIndex(r => r.name === row.name);
+//         if (startIndex === -1) return;
+
+//         let existing = new Set(all.filter(r => r.stone_code).map(r => r.stone_code));
+//         let duplicate_codes = [];
+
+//         for (let i = startIndex + 1; i < all.length; i++) {
+//             let r = all[i];
+//             if (r.stone_code) {
+//                 let m = r.stone_code.match(/^(.*?)(\d+)$/);
+//                 if (m && m[1] === prefix) {
+//                     next_num = cint(m[2]) + 1;
+//                 }
+//                 break;
+//             }
+
+//             let generated = prefix + String(next_num++).padStart(num_width, "0");
+//             if (existing.has(generated)) {
+//                 duplicate_codes.push(generated);
+//             }
+
+//             frappe.model.set_value(r.doctype, r.name, "stone_code", generated);
+//             existing.add(generated);
+
+//             // Inherit parent flags if needed
+//             if (frm.doc.chemical !== undefined) r.chemical = frm.doc.chemical;
+//             if (frm.doc.dry_fitting !== undefined) r.dry_fitting = frm.doc.dry_fitting;
+//             if (frm.doc.polishing !== undefined) r.polishing = frm.doc.polishing;
+
+//             calculate_volume(frm, r.doctype, r.name);
+//         }
+
+//         frm.refresh_field("stone_details");
+//         update_total_volume(frm);
+
+//         if (duplicate_codes.length > 0) {
+//             let dupMsg = __("Warning: Duplicate Stone Codes detected → ") + [...new Set(duplicate_codes)].join(", ");
+//             frappe.show_alert({ message: dupMsg, indicator: "orange" });
+//         }
+//     },
+
+//     // --- Dimension fields with inch validation ---
+//     l1: calculate_volume,
+//     l2: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (row.l2 >= 12) {
+//             frappe.msgprint(__('L2 must be less than 12 inches'));
+//             frappe.model.set_value(cdt, cdn, 'l2', 0);
+//         }
+//         calculate_volume(frm, cdt, cdn);
+//     },
+//     b1: calculate_volume,
+//     b2: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (row.b2 >= 12) {
+//             frappe.msgprint(__('B2 must be less than 12 inches'));
+//             frappe.model.set_value(cdt, cdn, 'b2', 0);
+//         }
+//         calculate_volume(frm, cdt, cdn);
+//     },
+//     h1: calculate_volume,
+//     h2: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (row.h2 >= 12) {
+//             frappe.msgprint(__('H2 must be less than 12 inches'));
+//             frappe.model.set_value(cdt, cdn, 'h2', 0);
+//         }
+//         calculate_volume(frm, cdt, cdn);
+//     },
+
+//     stone_details_remove: function(frm) {
+//         update_total_volume(frm);
+//     },
+
+//     refresh: function(frm, cdt, cdn) {
+//         // Optional: If you want child rows to reflect parent values always
+//         let row = locals[cdt][cdn];
+//         if (row && frm.doc) {
+//             if (frm.doc.chemical !== undefined) row.chemical = frm.doc.chemical;
+//             if (frm.doc.dry_fitting !== undefined) row.dry_fitting = frm.doc.dry_fitting;
+//             if (frm.doc.polishing !== undefined) row.polishing = frm.doc.polishing;
+//         }
+//     }
+// });
+
+// // --- Volume calculation for a single row ---
+// function calculate_volume(frm, cdt, cdn) {
+//     let row = locals[cdt][cdn];
+//     if (!row) return;
+//     let L = ((row.l1 || 0) * 12) + (row.l2 || 0);
+//     let B = ((row.b1 || 0) * 12) + (row.b2 || 0);
+//     let H = ((row.h1 || 0) * 12) + (row.h2 || 0);
+//     row.volume = ((L * B * H) / 1728).toFixed(2);
+//     frm.refresh_field('stone_details');
+//     update_total_volume(frm);
+// }
+
+// // --- Total volume across all rows ---
+// function update_total_volume(frm) {
+//     let total = 0;
+//     (frm.doc.stone_details || []).forEach(r => {
+//         total += flt(r.volume);
+//     });
+//     frm.set_value('total_volume', total.toFixed(2));
+// }
+
+// // ============================
+// // Parent Doctype: Size List
+// // ============================
+// frappe.ui.form.on('Size List', {
+//     main_part: function(frm) {
+//         if (!frm.doc.main_part) frm.set_value('sub_part', '');
+//     },
+
+//     sub_part: function(frm) {
+//         if (!frm.doc.sub_part) frm.set_value('main_part', '');
+//     },
+
+//     refresh: function(frm) {
+//         if (frm.doc.baps_project) {
+//             load_project_flags(frm);
+//         }
+//         // Ensure child rows reflect current parent flags
+//         sync_child_process_flags(frm);
+//     },
+
+//     baps_project: function(frm) {
+//         if (frm.doc.baps_project) {
+//             load_project_flags(frm);
+//         } else {
+//             frm.set_value({
+//                 chemical: 0,
+//                 dry_fitting: 0,
+//                 polishing: 0
+//             });
+//             sync_child_process_flags(frm);
+//         }
+//     },
+
+//     // When adding new row, inherit parent flags
+//     stone_details_add: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (frm.doc.chemical !== undefined) row.chemical = frm.doc.chemical;
+//         if (frm.doc.dry_fitting !== undefined) row.dry_fitting = frm.doc.dry_fitting;
+//         if (frm.doc.polishing !== undefined) row.polishing = frm.doc.polishing;
+//     },
+
+//     // Optional: Sync whenever parent flags change
+//     chemical: function(frm) {
+//         sync_child_process_flags(frm);
+//     },
+//     dry_fitting: function(frm) {
+//         sync_child_process_flags(frm);
+//     },
+//     polishing: function(frm) {
+//         sync_child_process_flags(frm);
+//     }
+// });
+
+// // --- Load project flags from linked Baps Project ---
+// function load_project_flags(frm) {
+//     if (!frm.doc.baps_project) {
+//         frm.set_value({
+//             chemical: 0,
+//             dry_fitting: 0,
+//             polishing: 0
+//         });
+//         return;
+//     }
+
+//     frappe.db.get_doc("Baps Project", frm.doc.baps_project).then(project => {
+//         frm.set_value({
+//             chemical: project.chemical ? 1 : 0,
+//             dry_fitting: project.dry_fitting ? 1 : 0,
+//             polishing: project.polishing ? 1 : 0
+//         });
+//         sync_child_process_flags(frm); // propagate to children
+//     });
+// }
+
+// // --- Sync parent process flags to all child rows ---
+// function sync_child_process_flags(frm) {
+//     if (!frm.doc.stone_details) return;
+
+//     frm.doc.stone_details.forEach(row => {
+//         if (frm.doc.chemical !== undefined) row.chemical = frm.doc.chemical;
+//         if (frm.doc.dry_fitting !== undefined) row.dry_fitting = frm.doc.dry_fitting;
+//         if (frm.doc.polishing !== undefined) row.polishing = frm.doc.polishing;
+//     });
+//     frm.refresh_field("stone_details");
+// }
+
+// // --- Restrict Sub Part based on Main Part ---
+// frappe.ui.form.on("Size List", {
+//     main_part: function(frm) {
+//         frm.set_query("sub_part", function() {
+//             if (!frm.doc.main_part) {
+//                 frappe.throw(__("Please select Main Part before choosing a Sub Part."));
+//             }
+//             return {
+//                 filters: {
+//                     main_part: frm.doc.main_part
+//                 }
+//             };
+//         });
+
+//         // clear sub_part if mismatch
+//         if (frm.doc.sub_part) {
+//             frappe.db.get_value("Sub Part", frm.doc.sub_part, "main_part", function(r) {
+//                 if (r && r.main_part !== frm.doc.main_part) {
+//                     frm.set_value("sub_part", null);
+//                 }
+//             });
+//         }
+//     },
+
+//     validate: function(frm) {
+//         if (!frm.doc.main_part && frm.doc.sub_part) {
+//             frappe.throw(__("You cannot add a Sub Part without selecting a Main Part."));
+//         }
+//     }
+// });
+
+// //size list data -------------------------------------
+// frappe.ui.form.on("Size List Details", {
+//     stone_name: function(frm, cdt, cdn) {
+//         let row = locals[cdt][cdn];
+//         if (row.stone_name) {
+//             frappe.db.get_value("Stone Name", row.stone_name, "stone_code", (r) => {
+//                 if (r && r.stone_code) {
+//                     row.stone_code = r.stone_code;
+//                     frm.refresh_field("stone_details");  // child table fieldname
+//                 }
+//             });
+//         }
+//     }
+// });
+
+
+// //-------------------------------------------------------------------------------------------------------------------------------   
+// frappe.ui.form.on('Size List', {
+//     refresh: function(frm) {
+//         setup_buttons(frm);
+//         attach_render_listener(frm);
+//         schedule_apply_styles(frm);
+//     },
+
+//     after_save: function(frm) {
+//         schedule_apply_styles(frm);
+//     }
+// });
+
+// function setup_buttons(frm) {
+//     // store refs on frm to avoid removing unknown things
+//     frm._szlst_buttons = frm._szlst_buttons || {};
+
+//     let unapproved = (frm.doc.stone_details || []).filter(r => !r.is_approved);
+//     // Approve Selected Rows
+//     if (!frm._szlst_buttons.approve && unapproved.length > 0) {
+//         frm._szlst_buttons.approve = frm.add_custom_button(__('Approve Selected Rows'), () => {
+//             approve_selected_rows(frm);
+//         });
+//         frm._szlst_buttons.approve.addClass('btn-primary');
+//     }
+
+//     // Publish (placed under Actions)
+//     if (!frm._szlst_buttons.publish) {
+//         frm._szlst_buttons.publish = frm.add_custom_button(__('Publish'), () => {
+//             publish_data(frm);
+//         }, __('Actions'));
+//         frm._szlst_buttons.publish.addClass('btn-success');
+//     }
+
+//     // enable/disable Publish depending on all-approved
+//     try {
+//         let allApproved = (frm.doc.stone_details || []).length > 0 &&
+//                           (frm.doc.stone_details || []).every(r => r.is_approved);
+//         if (frm._szlst_buttons.publish) {
+//             frm._szlst_buttons.publish.prop('disabled', !allApproved);
+//         }
+//     } catch (e) {
+//         console.error('publish btn enable/disable error', e);
+//     }
+// }
+
+// function approve_selected_rows(frm) {
+//     const grid = frm.fields_dict.stone_details && frm.fields_dict.stone_details.grid;
+//     const selected = grid ? grid.get_selected_children() : [];
+//     if (!selected.length) {
+//         frappe.msgprint(__('Please select at least one row to approve.'));
+//         return;
+//     }
+
+//     let count = 0;
+//     selected.forEach(row => {
+//         if (!row.is_approved) {
+//             frappe.model.set_value(row.doctype, row.name, 'is_approved', 1);
+//             count++;
+//         }
+//     });
+
+//     if (count === 0) {
+//         frappe.msgprint(__('All selected rows are already approved.'));
+//         return;
+//     }
+
+//     // Wait a little, then refresh and reapply
+//     setTimeout(() => {
+//         frm.refresh_field('stone_details');
+//         schedule_apply_styles(frm);
+//         frm.refresh(); // update buttons
+//         frappe.show_alert(__('{0} row(s) approved and locked.', [count]), 'green');
+//     }, 300);
+// }
+
+// function publish_data(frm) {
+//     frappe.call({
+//         method: 'frappe.client.set_value',
+//         args: {
+//             doctype: frm.doctype,
+//             name: frm.docname,
+//             fieldname: 'status',
+//             value: 'Published'
+//         },
+//         callback: function(r) {
+//             if (r.message) {
+//                 frm.reload_doc();
+//                 frappe.show_alert(__('Document published!'), 'green');
+//             }
+//         }
+//     });
+// }
+
+// // Apply row UI changes for approved rows (safe & tolerant)
+// function apply_row_styles(frm) {
+//     const child_table_fieldname = 'stone_details';
+//     const grid_wrapper = frm.fields_dict[child_table_fieldname] && frm.fields_dict[child_table_fieldname].grid && frm.fields_dict[child_table_fieldname].grid.wrapper;
+//     const grid = frm.fields_dict[child_table_fieldname] && frm.fields_dict[child_table_fieldname].grid;
+
+//     if (!frm.doc[child_table_fieldname] || !grid_wrapper) return;
+
+//     frm.doc[child_table_fieldname].forEach(row => {
+//         try {
+//             // robust row lookup (grid_rows_by_docname OR DOM search by data-name)
+//             let grid_row_obj = grid && grid.grid_rows_by_docname && grid.grid_rows_by_docname[row.name];
+//             let $row = null;
+
+//             if (grid_row_obj && grid_row_obj.row) {
+//                 $row = grid_row_obj.row;
+//             } else {
+//                 // fallback DOM selector
+//                 $row = grid_wrapper.find(`.grid-row[data-name="${row.name}"]`);
+//                 if (!$row.length) {
+//                     $row = grid_wrapper.find(`[data-name="${row.name}"]`);
+//                 }
+//             }
+
+//             if (!$row || !$row.length) {
+//                 // not rendered yet - skip
+//                 return;
+//             }
+
+//             process_row($row, row.is_approved);
+//         } catch (e) {
+//             console.error('apply_row_styles row error', e);
+//         }
+//     });
+// }
+
+// function process_row($row, is_approved) {
+//     if (is_approved) {
+//         // apply grey look
+//         $row.addClass('approved-row').css('background-color', '#f7f7f7');
+
+//         // disable input elements inside row but allow clicks on action controls
+//         $row.find('input, select, textarea, .input-with-feedback')
+//             .prop('readonly', true)
+//             .prop('disabled', true)
+//             .css({
+//                 'background-color': '#fafafa',
+//                 'color': '#666',
+//                 'border-color': '#eee',
+//                 'cursor': 'not-allowed'
+//             }).attr('title', 'Approved - Locked');
+
+//         $row.find('input[type="checkbox"]').prop('disabled', true);
+
+//         // hide edit/delete if present
+//         $row.find('.grid-edit-row, .grid-delete-row').hide();
+
+//         // prevent opening the edit dialog when clicking empty cell area,
+//         // but allow clicks on buttons/inputs/links inside the row
+//         $row.off('.approvalClick').on('click.approvalClick', function(e) {
+//             // if the click target is an actionable control, allow it
+//             if ($(e.target).closest('button, a, input, select, textarea, .grid-edit-row, .grid-delete-row, .grid-row-check').length) {
+//                 return;
+//             }
+//             e.preventDefault();
+//             e.stopPropagation();
+//             return false;
+//         });
+
+//         // block enter/tab from triggering row-level behavior unless focused into a control
+//         $row.off('.approvalKey').on('keydown.approvalKey', function(e) {
+//             if ($(e.target).is('input, textarea, select') || $(e.target).closest('button, a, .grid-edit-row').length) {
+//                 return;
+//             }
+//             if (e.key === 'Enter' || e.key === 'Tab') {
+//                 e.preventDefault();
+//                 e.stopPropagation();
+//             }
+//         });
+
+//         // disable right-click on the non-interactive area
+//         $row.off('.approvalCtx').on('contextmenu.approvalCtx', function(e) {
+//             if ($(e.target).closest('button, input, a, .grid-edit-row, .grid-delete-row').length) {
+//                 return; // allow contextmenu on controls
+//             }
+//             e.preventDefault();
+//             return false;
+//         });
+
+//     } else {
+//         // revert to normal
+//         $row.removeClass('approved-row').css('background-color', '');
+//         $row.find('input, select, textarea, .input-with-feedback')
+//             .prop('readonly', false)
+//             .prop('disabled', false)
+//             .css({
+//                 'background-color': '',
+//                 'color': '',
+//                 'border-color': '',
+//                 'cursor': ''
+//             }).removeAttr('title');
+//         $RowCheckboxes = $row.find('input[type="checkbox"]').prop('disabled', false);
+//         $row.find('.grid-edit-row, .grid-delete-row').show();
+//         $row.off('.approvalClick .approvalKey .approvalCtx');
+//     }
+// }
+
+// function attach_render_listener(frm) {
+//     const child_field = 'stone_details';
+//     const wrapper = frm.fields_dict[child_field] && frm.fields_dict[child_field].grid && frm.fields_dict[child_field].grid.wrapper;
+//     if (!wrapper) return;
+
+//     // remove previous listener safely
+//     wrapper.off('render_complete.size_approval');
+
+//     // attach listener - when grid renders, re-apply styles (with a tiny debounce)
+//     wrapper.on('render_complete.size_approval', function() {
+//         // small delay to allow DOM to settle
+//         frappe.after_ajax(() => {
+//             setTimeout(() => {
+//                 apply_row_styles(frm);
+//             }, 80);
+//         });
+//     });
+// }
+
+// // a lightweight retry scheduler for initial rendering
+// function schedule_apply_styles(frm) {
+//     let tries = 0;
+//     const handle = setInterval(() => {
+//         try {
+//             apply_row_styles(frm);
+//         } catch (e) {
+//             console.error('schedule_apply error', e);
+//         }
+//         tries++;
+//         if (tries > 12) clearInterval(handle); // give it a few tries (~2.4s)
+//     }, 200);
+// }
+
+// // inject small CSS once
+// if (!$('#approval-style').length) {
+//     $(`<style id="approval-style">
+//         .approved-row { background-color: #f7f7f7 !important; }
+//         .approved-row .grid-static-col { background-color: #eee !important; }
+//     </style>`).appendTo('head');
+// }
+
+
+
+// // ------------------------------------------------------------
+// // -------------------------- new change -------------------------------
+// // ------------------------------------------------------------
+
+
+// Size List client script - consolidated and cleaned
+
+// ----------------------------
+// Child Doctype: Size List Details
+// ----------------------------
+frappe.ui.form.on('Size List Details', {
+    stone_name: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (!row) return;
+        if (row.stone_name) {
+            frappe.db.get_value('Stone Name', row.stone_name, 'stone_code', (r) => {
+                if (r && r.stone_code) {
+                    frappe.model.set_value(cdt, cdn, 'stone_code', r.stone_code);
+                }
+            });
+        }
+    },
+
+    range: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (!row || !row.range) return;
+
+        let input = row.range.toString().trim();
+        if (!input) return;
+
+        // Disallow mixing comma + dash
+        if (input.indexOf('-') !== -1 && input.indexOf(',') !== -1) {
+            frappe.show_alert({message: __('Invalid input → You cannot mix ranges and comma values'), indicator: 'red'});
+            frappe.model.set_value(cdt, cdn, 'range', '');
+            return;
+        }
+
+        // Parse numbers
+        let numbers = [];
+        if (input.indexOf('-') !== -1) {
+            let parts = input.split('-').map(s => s.trim());
+            let start = cint(parts[0]), end = cint(parts[1]);
+            if (isNaN(start) || isNaN(end) || start > end) {
+                frappe.show_alert({message: __('Invalid range → ') + input, indicator: 'red'});
+                return;
+            }
+            for (let i = start; i <= end; i++) numbers.push(i);
+        } else if (input.indexOf(',') !== -1) {
+            numbers = input.split(',').map(s => cint(s.trim())).filter(n => !isNaN(n));
+        } else {
+            let n = cint(input);
+            if (!isNaN(n)) numbers = [n];
+        }
+
+        numbers = [...new Set(numbers)].sort((a,b) => a-b);
+        if (!numbers.length) return;
+
+        // Require stone_code on the first row
+        if (!row.stone_code) {
+            frappe.show_alert({message: __('Please enter Stone Code in the first row before using range'), indicator: 'red'});
+            return;
+        }
+
+        // // Extract prefix and numeric width safely
+        // let m = (row.stone_code || '').toString().match(/^(.*?)(\d+)$/);
+        // if (!m) {
+        //     frappe.show_alert({message: __('Stone Code must end with numbers, e.g. ABCDE001'), indicator: 'red'});
+        //     return;
+        // }
+        let prefix = m[1];
+        let num_width = m[2].length;
+
+        // Clear range field for cleanliness
+        frappe.model.set_value(cdt, cdn, 'range', '');
+
+        let duplicate_codes = [];
+        numbers.forEach((n, idx) => {
+            let stone_code = prefix + String(n).padStart(num_width, '0');
+            let exists = (frm.doc.stone_details || []).some(r => r.stone_code === stone_code || r.serial_no === n);
+            if (exists) {
+                duplicate_codes.push(stone_code);
+                return;
+            }
+
+            if (idx === 0) {
+                row.stone_code = stone_code;
+                row.serial_no = n;
+                frappe.model.set_value(cdt, cdn, 'stone_code', stone_code);
+                frappe.model.set_value(cdt, cdn, 'serial_no', n);
+            } else {
+                let nr = frm.add_child('stone_details');
+                // copy a subset of fields
+                ['stone_name','chemical','dry_fitting','polishing'].forEach(f => {
+                    if (row[f] !== undefined) nr[f] = row[f];
+                });
+                nr.stone_code = stone_code;
+                nr.serial_no = n;
+                frappe.model.set_value(nr.doctype, nr.name, 'stone_code', stone_code);
+                frappe.model.set_value(nr.doctype, nr.name, 'serial_no', n);
+            }
+        });
+
+        if (duplicate_codes.length) {
+            frappe.show_alert({message: __('Skipped duplicates: ') + duplicate_codes.join(', '), indicator: 'orange'});
+        }
+
+        frm.refresh_field('stone_details');
+    },
+
+    stone_code: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (!row || !row.stone_code) return;
+
+        // Safely parse
+        // let m = (row.stone_code || '').toString().match(/^(.*?)(\d+)$/);
+        // if (!m) {
+        //     frappe.msgprint(__('Stone Code must end with numbers, e.g. ABCDE001'));
+        //     return;
+        // }
+
+        let prefix = m[1];
+        let base_num = cint(m[2]);
+        let num_width = m[2].length;
+        let next_num = base_num + 1;
+
+        let all = frm.doc.stone_details || [];
+        let startIndex = all.findIndex(r => r.name === row.name);
+        if (startIndex === -1) return;
+
+        let existing = new Set(all.filter(r => r.stone_code).map(r => r.stone_code));
+        let duplicate_codes = [];
+
+        for (let i = startIndex + 1; i < all.length; i++) {
+            let r = all[i];
+            if (r.stone_code) {
+                let mm = (r.stone_code || '').toString().match(/^(.*?)(\d+)$/);
+                if (mm && mm[1] === prefix) {
+                    next_num = cint(mm[2]) + 1;
+                }
+                break;
+            }
+
+            let generated = prefix + String(next_num++).padStart(num_width, '0');
+            if (existing.has(generated)) {
+                duplicate_codes.push(generated);
+                continue;
+            }
+            frappe.model.set_value(r.doctype, r.name, 'stone_code', generated);
+            existing.add(generated);
+        }
+
+        frm.refresh_field('stone_details');
+        update_total_volume(frm);
+
+        if (duplicate_codes.length) {
+            frappe.show_alert({message: __('Warning: Duplicate Stone Codes detected → ') + duplicate_codes.join(', '), indicator: 'orange'});
+        }
+    },
+
+    l1: calculate_volume,
+    l2: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (row && row.l2 >= 12) {
+            frappe.msgprint(__('L2 must be less than 12 inches'));
+            frappe.model.set_value(cdt, cdn, 'l2', 0);
+        }
+        calculate_volume(frm, cdt, cdn);
+    },
+    b1: calculate_volume,
+    b2: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (row && row.b2 >= 12) {
+            frappe.msgprint(__('B2 must be less than 12 inches'));
+            frappe.model.set_value(cdt, cdn, 'b2', 0);
+        }
+        calculate_volume(frm, cdt, cdn);
+    },
+    h1: calculate_volume,
+    h2: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (row && row.h2 >= 12) {
+            frappe.msgprint(__('H2 must be less than 12 inches'));
+            frappe.model.set_value(cdt, cdn, 'h2', 0);
+        }
+        calculate_volume(frm, cdt, cdn);
+    },
+
+    stone_details_remove: function(frm) {
+        update_total_volume(frm);
+    }
+});
+
+// --- Volume calculation for a single row ---
+function calculate_volume(frm, cdt, cdn) {
+    let row = locals[cdt][cdn];
+    if (!row) return;
+    let L = ((row.l1 || 0) * 12) + (row.l2 || 0);
+    let B = ((row.b1 || 0) * 12) + (row.b2 || 0);
+    let H = ((row.h1 || 0) * 12) + (row.h2 || 0);
+    row.volume = ((L * B * H) / 1728).toFixed(2);
+    frm.refresh_field('stone_details');
+    update_total_volume(frm);
+}
+
+// --- Total volume across all rows ---
+function update_total_volume(frm) {
+    let total = 0;
+    (frm.doc.stone_details || []).forEach(r => {
+        total += flt(r.volume);
+    });
+    frm.set_value('total_volume', total.toFixed(2));
+}
+
+// ============================
+// Parent Doctype: Size List
+// ============================
+frappe.ui.form.on('Size List', {
+    refresh: function(frm) {
+        if (frm.doc.baps_project) {
+            load_project_flags(frm);
+        }
+        setup_buttons(frm);
+        attach_render_listener(frm);
+        schedule_apply_styles(frm);
+    },
+
+    validate: function(frm) {
+        let unapproved = (frm.doc.stone_details || []).filter(r => !r.is_approved);
+        if (unapproved.length > 0) {
+            frappe.validated = false;  // prevent form submission
+            frappe.warn(
+                __("Not All Rows Approved"),
+                __("You are submitting this form with {0} unapproved rows. Are you sure you want to continue?", [unapproved.length]),
+                () => {
+                    frappe.validated = true;  // allow submission
+                    frm.save();
+                },
+                __("Proceed Anyway"),
+                true  // is_minimizable
+            );
+            return false;
+        }
+        return true;
+    },
+
+    after_save: function(frm) {
+        schedule_apply_styles(frm);
+    },
+
+    baps_project: function(frm) {
+        if (frm.doc.baps_project) {
+            load_project_flags(frm);
+        } else {
+            frm.set_value({chemical: 0, dry_fitting: 0, polishing: 0});
+            sync_child_process_flags(frm);
+        }
+    },
+
+    stone_details_add: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+        if (!row) return;
+        if (frm.doc.chemical !== undefined) frappe.model.set_value(cdt, cdn, 'chemical', frm.doc.chemical);
+        if (frm.doc.dry_fitting !== undefined) frappe.model.set_value(cdt, cdn, 'dry_fitting', frm.doc.dry_fitting);
+        if (frm.doc.polishing !== undefined) frappe.model.set_value(cdt, cdn, 'polishing', frm.doc.polishing);
+    },
+
+    chemical: function(frm) { sync_child_process_flags(frm); },
+    dry_fitting: function(frm) { sync_child_process_flags(frm); },
+    polishing: function(frm) { sync_child_process_flags(frm); }
+});
+
+function load_project_flags(frm) {
+    if (!frm.doc.baps_project) return;
+    frappe.db.get_doc('Baps Project', frm.doc.baps_project).then(project => {
+        frm.set_value({
+            chemical: project.chemical ? 1 : 0,
+            dry_fitting: project.dry_fitting ? 1 : 0,
+            polishing: project.polishing ? 1 : 0
+        });
+        sync_child_process_flags(frm);
+    });
+}
+
+function sync_child_process_flags(frm) {
+    if (!frm.doc.stone_details) return;
+    frm.doc.stone_details.forEach(row => {
+        if (frm.doc.chemical !== undefined) row.chemical = frm.doc.chemical;
+        if (frm.doc.dry_fitting !== undefined) row.dry_fitting = frm.doc.dry_fitting;
+        if (frm.doc.polishing !== undefined) row.polishing = frm.doc.polishing;
+    });
+    frm.refresh_field('stone_details');
+}
+
+// --- Approval & Publish UI ---
+function setup_buttons(frm) {
+    // Remove existing buttons to prevent duplicates
+    if (frm.custom_buttons['Approve Selected Rows']) {
+        frm.custom_buttons['Approve Selected Rows'].remove();
+        delete frm.custom_buttons['Approve Selected Rows'];
+    }
+    if (frm.custom_buttons['Publish']) {
+        frm.custom_buttons['Publish'].remove();
+        delete frm.custom_buttons['Publish'];
+    }
+
+    let unapproved = (frm.doc.stone_details || []).filter(r => !r.is_approved);
+    if (unapproved.length) {
+        frm.add_custom_button(__('Approve Selected Rows'), () => approve_selected_rows(frm))
+            .addClass('btn-primary');
+    }
+
+    let publishBtn = frm.add_custom_button(__('Publish'), () => publish_data(frm), __('Actions'))
+        .addClass('btn-success');
+
+    // Enable/disable based on approval status
+    let allApproved = (frm.doc.stone_details || []).length > 0 && 
+                      (frm.doc.stone_details || []).every(r => r.is_approved);
+    publishBtn.prop('disabled', !allApproved);
+}
+
+function approve_selected_rows(frm) {
+    const grid = frm.fields_dict.stone_details && frm.fields_dict.stone_details.grid;
+    if (!grid || !grid.get_selected_children) {
+        frappe.msgprint(__('Grid not ready'));
+        return;
+    }
+
+    const selected = grid.get_selected_children();
+    if (!selected.length) {
+        frappe.msgprint(__('Please select at least one row to approve.'));
+        return;
+    }
+
+    let updates = [];
+    selected.forEach(r => {
+        if (!r.is_approved) {
+            updates.push(
+                frappe.db.set_value(r.doctype, r.name, 'is_approved', 1)
+                    .then(() => {
+                        // Update local state after server success
+                        r.is_approved = 1;
+                        frappe.model.set_value(r.doctype, r.name, 'is_approved', 1);
+                    })
+            );
+        }
+    });
+
+    if (!updates.length) {
+        frappe.msgprint(__('All selected rows are already approved.'));
+        return;
+    }
+
+    Promise.all(updates)
+        .then(() => {
+            frm.reload_doc();
+            schedule_apply_styles(frm);
+            frappe.show_alert({
+                message: __('{0} row(s) approved and locked.', [updates.length]),
+                indicator: 'green'
+            });
+        })
+        .catch(err => {
+            console.error('Error approving rows:', err);
+            frappe.msgprint(__('Error while approving rows. See console for details.'));
+        });
+}
+
+function publish_data(frm) {
+    frappe.call({
+        method: 'frappe.client.set_value',
+        args: {
+            doctype: frm.doctype,
+            name: frm.docname,
+            fieldname: 'status',
+            value: 'Published'
+        },
+        callback: function(r) {
+            if (r.message) {
+                frm.reload_doc();
+                frappe.show_alert({
+                    message: __('Document published successfully!'),
+                    indicator: 'green'
+                });
+            }
+        }
+    });
+}
+
+// --- Row styling & locking ---
+function apply_row_styles(frm) {
+    if (!frm.doc.stone_details || !frm.fields_dict.stone_details) return;
+
+    const grid = frm.fields_dict.stone_details.grid;
+    const wrapper = grid && grid.wrapper;
+    if (!wrapper) return;
+
+    frm.doc.stone_details.forEach(row => {
+        try {
+            let grid_row = grid.grid_rows_by_docname[row.name];
+            if (!grid_row || !grid_row.row) return;
+            
+            let $row = grid_row.row;
+            if (!$row.length) return;
+
+            process_row($row, row.is_approved);
+        } catch (e) {
+            console.error('Error applying row styles:', e);
+        }
+    });
+}
+
+function process_row($row, is_approved) {
+    if (is_approved) {
+        $row.addClass('approved-row');
+        
+        // Disable all inputs
+        $row.find('input, select, textarea, .input-with-feedback')
+            .prop('readonly', true)
+            .prop('disabled', true)
+            .css({
+                'background-color': '#f9f9f9',
+                'color': '#666',
+                'border-color': '#ddd',
+                'cursor': 'not-allowed'
+            })
+            .attr('title', 'Approved - Locked');
+
+        $row.find('input[type="checkbox"]').prop('disabled', true);
+        
+        // Hide edit/delete buttons
+        $row.find('.grid-row-edit, .grid-row-delete, .grid-row-duplicate').hide();
+
+        // Block row interactions except for checkboxes
+        $row.off('.approval')
+            .on('click.approval', function(e) {
+                const $target = $(e.target);
+                if (!$target.closest('input[type="checkbox"], .grid-row-check').length) {
+                    e.stopPropagation();
+                    return false;
+                }
+            });
+
+    } else {
+        $row.removeClass('approved-row');
+        
+        // Re-enable all inputs
+        $row.find('input, select, textarea, .input-with-feedback')
+            .prop('readonly', false)
+            .prop('disabled', false)
+            .css({
+                'background-color': '',
+                'color': '',
+                'border-color': '',
+                'cursor': ''
+            })
+            .removeAttr('title');
+
+        $row.find('input[type="checkbox"]').prop('disabled', false);
+        
+        // Show edit/delete buttons
+        $row.find('.grid-row-edit, .grid-row-delete, .grid-row-duplicate').show();
+
+        // Remove approval handlers
+        $row.off('.approval');
+    }
+}
+
+function attach_render_listener(frm) {
+    const wrapper = frm.fields_dict.stone_details.grid.wrapper;
+    
+    // Remove old listener
+    wrapper.off('render_complete.size_approval');
+    
+    // Add new listener with debounce
+    wrapper.on('render_complete.size_approval', () => {
+        frappe.after_ajax(() => setTimeout(() => apply_row_styles(frm), 100));
+    });
+}
+
+function schedule_apply_styles(frm) {
+    let tries = 0;
+    const handle = setInterval(() => {
+        try {
+            apply_row_styles(frm);
+        } catch (e) {
+            console.error('Error in schedule_apply_styles:', e);
+        }
+        if (++tries >= 10) clearInterval(handle);
+    }, 200);
+}
+
+// Inject CSS
+if (!$('#size-list-style').length) {
+    $(`<style id="size-list-style">
+        .approved-row {
+            background-color: #f0f0f0 !important;
+        }
+        .approved-row .grid-static-col {
+            background-color: #e8e8e8 !important;
+        }
+        .approved-row .editable-row {
+            background-color: #f5f5f5 !important;
+        }
+        .approved-row .grid-row-check {
+            opacity: 0.7;
+        }
+    </style>`).appendTo('head');
+}
