@@ -76,7 +76,7 @@
    "fieldname": "form_number",
    "fieldtype": "Link",
    "label": "Form Number",
-   "options": "Size List",
+   "options": "Size List Verification",
    "unique": 1
   },
   {
@@ -156,7 +156,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-09-24 16:16:19.979961",
+ "modified": "2025-09-25 05:38:55.794562",
  "modified_by": "Administrator",
  "module": "Baps",
  "name": "SIze List Generation",

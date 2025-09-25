@@ -10,77 +10,72 @@
 // Copyright (c) 2025, Ayush Patel and contributors
 // For license information, please see license.txt
 
+// Copyright (c) 2025, Ayush Patel and contributors
+// For license information, please see license.txt
+
 frappe.ui.form.on('Size List Generation', {
     refresh: function(frm) {
-        // Add custom CSS for generation status
+        // Add custom CSS for approved stones (greyed out)
         if (!$('#generation-styles').length) {
             $('head').append(`
                 <style id="generation-styles">
-                    .generation-approved {
-                        background-color: #d4edda !important;
+                    .approved-stone-row {
+                        background-color: #f8f9fa !important;
                         border-left: 4px solid #28a745 !important;
                     }
-                    .generation-info-box {
-                        background-color: #e3f2fd;
-                        border: 1px solid #2196f3;
-                        border-radius: 5px;
+                    .approved-stone-row .grid-static-col {
+                        background-color: #f8f9fa !important;
+                        color: #6c757d;
+                    }
+                    .generation-summary {
+                        background: linear-gradient(135deg, #28a745, #20c997);
+                        color: white;
                         padding: 15px;
+                        border-radius: 8px;
                         margin: 10px 0;
-                    }
-                    .verification-stats {
-                        display: flex;
-                        justify-content: space-around;
-                        text-align: center;
-                    }
-                    .verification-stats .stat {
-                        flex: 1;
-                        padding: 10px;
-                    }
-                    .verification-stats .stat .number {
-                        font-size: 24px;
-                        font-weight: bold;
-                        display: block;
                     }
                 </style>
             `);
         }
         
         // Make all fields read-only except form_number for new documents
-        make_generation_fields_read_only(frm);
-        
-        // Disable adding/deleting rows in child table
-        frm.set_df_property('stone_details', 'cannot_add_rows', 1);
-        frm.set_df_property('stone_details', 'cannot_delete_rows', 1);
-        make_child_table_read_only(frm);
-        
-        // Add custom buttons
-        if (frm.doc.form_number && !frm.is_new()) {
-            frm.add_custom_button(__('Refresh from Verification'), function() {
-                refresh_from_verification(frm);
-            });
-            
-            frm.add_custom_button(__('Show Verification Status'), function() {
-                show_verification_status(frm);
-            });
+        if (frm.is_new() && !frm.doc.stone_details?.length) {
+            // For new documents, only form_number is editable
+            frm.set_df_property('form_number', 'read_only', 0);
+            make_main_fields_readonly(frm);
+        } else {
+            // For existing documents, make everything read-only
+            make_all_fields_readonly(frm);
         }
         
+        // Make child table read-only and apply styling
+        make_child_table_readonly(frm);
+        apply_approved_stone_styling(frm);
+        
+        // Add custom buttons
         if (frm.doc.stone_details && frm.doc.stone_details.length > 0) {
             frm.add_custom_button(__('Generation Summary'), function() {
                 show_generation_summary(frm);
             });
-            
-            frm.add_custom_button(__('Export to Excel'), function() {
-                export_to_excel(frm);
-            });
         }
         
-        // Add help text
-        if (!frm.doc.form_number && !frm.doc.stone_details?.length) {
-            frm.dashboard.add_comment(__('📋 Enter a Form Number to automatically load approved stones from Size List Verification. This form shows only verified stones ready for generation.'), 'blue', true);
+        // Show help text for new documents
+        if (frm.is_new() && !frm.doc.stone_details?.length) {
+            frm.dashboard.add_comment(
+                __('📋 Enter a Form Number to automatically load approved stones from Size List Verification. Only verified stones will be imported.'), 
+                'blue', 
+                true
+            );
         }
-        
-        // Apply styling to existing rows
-        apply_generation_styling(frm);
+
+        // Add debug buttons
+        frm.add_custom_button(__('Debug Verification Search'), function() {
+            debug_verification_search(frm);
+        }, __('Debug'));
+
+        frm.add_custom_button(__('Show Available Verifications'), function() {
+            show_available_verifications(frm);
+        }, __('Debug'));
     },
     
     form_number: function(frm) {
@@ -92,245 +87,171 @@ frappe.ui.form.on('Size List Generation', {
             indicator: 'blue'
         });
 
-        // Check if verification exists and get summary
+        // Fetch approved stones from verification
         frappe.call({
-            method: "baps.baps.doctype.size_list_generation.size_list_generation.check_form_number_exists",
+            method: "baps.baps.doctype.size_list_generation.size_list_generation.get_approved_stones_from_verification",
             args: {
                 form_number: frm.doc.form_number
             },
             callback: function(r) {
                 if (r && r.message && r.message.success) {
-                    if (r.message.verification_exists) {
-                        // Show verification summary and load approved stones
-                        show_verification_info(frm, r.message.summary);
-                        load_approved_stones(frm);
-                    } else {
-                        frappe.msgprint({
-                            title: __('Verification Required'),
-                            message: __('Size List Verification not found for Form Number: {0}.<br><br>{1}<br><br>Please complete the verification process first before generating the size list.', 
-                                [frm.doc.form_number, r.message.message]),
-                            indicator: 'orange',
-                            primary_action: {
-                                label: __('Create Verification'),
-                                action: function() {
-                                    frappe.new_doc("Size List Verification", {
-                                        form_number: frm.doc.form_number
-                                    });
-                                }
-                            }
-                        });
-                    }
+                    auto_fill_from_verification(frm, r.message);
                 } else {
-                    frappe.msgprint({
-                        title: __('Error'),
-                        message: r.message.message || 'Error checking form number',
-                        indicator: 'red'
-                    });
+                    // Show detailed error with available verifications
+                    show_verification_not_found_dialog(frm, r.message.message || 'Size List Verification not found');
                 }
             }
         });
-    },
-
-    before_save: function(frm) {
-        if (frm.doc.stone_details && frm.doc.stone_details.length > 0) {
-            // Calculate total volume
-            let total_volume = 0;
-            frm.doc.stone_details.forEach(function(row) {
-                if (row.volume) {
-                    total_volume += parseFloat(row.volume) || 0;
-                }
-            });
-            frm.set_value('total_volume_cft', total_volume);
-        }
     }
 });
 
-// Load approved stones from verification
-function load_approved_stones(frm) {
-    frappe.call({
-        method: "baps.baps.doctype.size_list_generation.size_list_generation.auto_populate_from_verification",
-        args: {
-            form_number: frm.doc.form_number,
-            generation_doc_name: frm.doc.name || null
-        },
-        callback: function(r) {
-            if (r && r.message && r.message.success) {
-                // Reload the document to show updated data
-                frm.reload_doc();
-                
-                frappe.show_alert({
-                    message: __('✅ {0}', [r.message.message]),
-                    indicator: 'green'
-                });
-                
-                // Show success message
-                frappe.msgprint({
-                    title: __('Generation Ready'),
-                    message: __('Successfully loaded <b>{0}</b> approved stones out of <b>{1}</b> total stones.<br><br>The size list is now ready for generation processing.', 
-                        [r.message.approved_count, r.message.total_count]),
-                    indicator: 'green'
-                });
-            } else {
-                frappe.msgprint({
-                    title: __('Load Error'),
-                    message: r.message.message || 'Error loading approved stones',
-                    indicator: 'red'
-                });
-            }
-        }
+// Auto-fill form from verification data
+function auto_fill_from_verification(frm, response) {
+    let data = response.data;
+    
+    // Fill main form fields
+    frm.set_value('prep_date', data.prep_date);
+    frm.set_value('material_type', data.material_type);
+    frm.set_value('baps_project', data.baps_project);
+    frm.set_value('project_name', data.project_name);
+    frm.set_value('main_part', data.main_part);
+    frm.set_value('sub_part', data.sub_part);
+    frm.set_value('total_volume_cft', data.total_volume_cft);
+    frm.set_value('cutting_region', data.cutting_region);
+    frm.set_value('polishing_required', data.polishing_required);
+    frm.set_value('dry_fitting_required', data.dry_fitting_required);
+    frm.set_value('carving_required', data.carving_required);
+    frm.set_value('chemical_required', data.chemical_required);
+    frm.set_value('approved_date', data.approved_date);
+    frm.set_value('checked_by', data.checked_by);
+    
+    // Clear and populate child table with ONLY approved stones
+    frm.clear_table('stone_details');
+    
+    if (data.stone_details && data.stone_details.length > 0) {
+        data.stone_details.forEach(function(stone) {
+            let row = frm.add_child('stone_details');
+            row.stone_name = stone.stone_name;
+            row.stone_code = stone.stone_code;
+            row.range = stone.range;
+            row.l1 = stone.l1;
+            row.l2 = stone.l2;
+            row.b1 = stone.b1;
+            row.b2 = stone.b2;
+            row.h1 = stone.h1;
+            row.h2 = stone.h2;
+            row.volume = stone.volume;
+        });
+        
+        frm.refresh_field('stone_details');
+    }
+    
+    // Make everything read-only after loading data
+    make_all_fields_readonly(frm);
+    make_child_table_readonly(frm);
+    
+    // Apply styling to show these are approved stones
+    setTimeout(() => {
+        apply_approved_stone_styling(frm);
+    }, 500);
+    
+    // Show success message
+    frappe.show_alert({
+        message: __('✅ Loaded {0} approved stones for generation', [response.approved_count]),
+        indicator: 'green'
+    });
+    
+    // Show summary in dashboard
+    show_generation_info(frm, response);
+    
+    frappe.msgprint({
+        title: __('Generation Ready'),
+        message: __('<strong>✅ Success!</strong><br><br>Loaded <b>{0}</b> approved stones out of <b>{1}</b> total stones from verification.<br><br>All stones shown are verified and ready for generation processing.', 
+            [response.approved_count, response.total_count]),
+        indicator: 'green'
     });
 }
 
-// Show verification information
-function show_verification_info(frm, summary) {
-    if (!summary) return;
+// Make main form fields read-only (except form_number for new docs)
+function make_main_fields_readonly(frm) {
+    const main_fields = [
+        'prep_date', 'material_type', 'baps_project', 'project_name', 
+        'main_part', 'sub_part', 'total_volume_cft', 'cutting_region',
+        'polishing_required', 'dry_fitting_required', 'carving_required', 
+        'chemical_required', 'approved_date', 'checked_by'
+    ];
     
+    main_fields.forEach(function(field) {
+        frm.set_df_property(field, 'read_only', 1);
+    });
+}
+
+// Make all fields read-only
+function make_all_fields_readonly(frm) {
+    make_main_fields_readonly(frm);
+    frm.set_df_property('form_number', 'read_only', 1);
+}
+
+// Make child table read-only
+function make_child_table_readonly(frm) {
+    // Disable adding/removing rows
+    frm.set_df_property('stone_details', 'cannot_add_rows', 1);
+    frm.set_df_property('stone_details', 'cannot_delete_rows', 1);
+    
+    // Make all child table fields read-only
+    const child_fields = [
+        'stone_name', 'stone_code', 'range', 'l1', 'l2', 'b1', 'b2', 'h1', 'h2', 'volume'
+    ];
+    
+    child_fields.forEach(function(field) {
+        frm.set_df_property('stone_details', field, 'read_only', 1);
+    });
+}
+
+// Apply styling to show approved stones (greyed out)
+function apply_approved_stone_styling(frm) {
+    setTimeout(() => {
+        if (frm.doc.stone_details) {
+            frm.doc.stone_details.forEach(function(row) {
+                let row_element = $(`.grid-row[data-name="${row.name}"]`);
+                row_element.addClass('approved-stone-row');
+            });
+        }
+    }, 300);
+}
+
+// Show generation info in dashboard
+function show_generation_info(frm, response) {
     let info_html = `
-        <div class="generation-info-box">
-            <h5>📊 Verification Status for Form ${frm.doc.form_number}</h5>
-            <div class="verification-stats">
-                <div class="stat">
-                    <span class="number" style="color: #28a745;">${summary.verified_count}</span>
-                    <small>Approved</small>
+        <div class="generation-summary">
+            <h5>📊 Generation Summary - ${frm.doc.form_number}</h5>
+            <div class="row text-center">
+                <div class="col-sm-4">
+                    <strong style="font-size: 20px;">${response.approved_count}</strong><br>
+                    <small>Approved Stones</small>
                 </div>
-                <div class="stat">
-                    <span class="number" style="color: #dc3545;">${summary.incorrect_count}</span>
-                    <small>Incorrect</small>
+                <div class="col-sm-4">
+                    <strong style="font-size: 20px;">${response.total_count}</strong><br>
+                    <small>Total in Verification</small>
                 </div>
-                <div class="stat">
-                    <span class="number" style="color: #ffc107;">${summary.pending_count}</span>
-                    <small>Pending</small>
-                </div>
-                <div class="stat">
-                    <span class="number" style="color: #2196f3;">${summary.completion_percentage}%</span>
-                    <small>Complete</small>
+                <div class="col-sm-4">
+                    <strong style="font-size: 20px;">${Math.round((response.approved_count/response.total_count)*100)}%</strong><br>
+                    <small>Approval Rate</small>
                 </div>
             </div>
         </div>
     `;
     
-    // Add to form dashboard
-    frm.dashboard.add_comment(info_html, 'blue', true);
+    frm.dashboard.add_comment(info_html, 'green', true);
 }
 
-// Refresh from verification
-function refresh_from_verification(frm) {
-    frappe.confirm(
-        __('This will refresh the stone details from the latest verification data. Any manual changes will be lost. Continue?'),
-        function() {
-            load_approved_stones(frm);
-        }
-    );
-}
-
-// Show verification status
-function show_verification_status(frm) {
-    frappe.call({
-        method: "baps.baps.doctype.size_list_generation.size_list_generation.get_verification_summary",
-        args: {
-            form_number: frm.doc.form_number
-        },
-        callback: function(r) {
-            if (r && r.message && r.message.success) {
-                let summary = r.message.data;
-                let status_html = `
-                    <div class="verification-summary">
-                        <h4>📋 Verification Status - Form ${frm.doc.form_number}</h4>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="alert alert-info text-center">
-                                    <strong style="font-size: 20px;">${summary.total_stones}</strong><br>
-                                    <span>Total Stones</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="alert alert-success text-center">
-                                    <strong style="font-size: 20px;">${summary.verified_count}</strong><br>
-                                    <span>✅ Approved</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="alert alert-danger text-center">
-                                    <strong style="font-size: 20px;">${summary.incorrect_count}</strong><br>
-                                    <span>❌ Incorrect</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="alert alert-warning text-center">
-                                    <strong style="font-size: 20px;">${summary.pending_count}</strong><br>
-                                    <span>⏳ Pending</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="alert ${summary.verification_complete ? 'alert-success' : 'alert-warning'}">
-                            <strong>Status: </strong>
-                            ${summary.verification_complete ? 
-                                '✅ Verification Complete - All stones have been reviewed' : 
-                                `⏳ ${summary.pending_count} stones still pending verification`
-                            }
-                        </div>
-                    </div>
-                `;
-                
-                frappe.msgprint({
-                    title: __('Verification Status'),
-                    message: status_html,
-                    indicator: summary.verification_complete ? 'green' : 'orange'
-                });
-            }
-        }
-    });
-}
-
-// Make fields read-only
-function make_generation_fields_read_only(frm) {
-    if (frm.is_new() && !frm.doc.form_number) {
-        // For new documents, only form_number is editable
-        frm.set_df_property('form_number', 'read_only', 0);
-    } else {
-        // For existing documents, make all main fields read-only
-        const read_only_fields = [
-            'prep_date', 'material_type', 'baps_project', 'project_name', 
-            'main_part', 'sub_part', 'total_volume_cft', 'cutting_region',
-            'polishing_required', 'dry_fitting_required', 'carving_required', 
-            'chemical_required', 'approved_date', 'checked_by'
-        ];
-        
-        read_only_fields.forEach(function(field) {
-            frm.set_df_property(field, 'read_only', 1);
-        });
-        
-        // Form number should also be read-only after data is loaded
-        frm.set_df_property('form_number', 'read_only', 1);
-    }
-}
-
-function make_child_table_read_only(frm) {
-    if (!frm.doc.stone_details) return;
-    
-    const child_read_only_fields = [
-        'stone_name', 'stone_code', 'range', 'l1', 'l2', 'b1', 'b2', 'h1', 'h2', 'volume'
-    ];
-    
-    child_read_only_fields.forEach(function(field) {
-        frm.set_df_property('stone_details', field, 'read_only', 1);
-    });
-}
-
-function apply_generation_styling(frm) {
-    setTimeout(() => {
-        frm.doc.stone_details?.forEach(function(row) {
-            let row_element = $(`.grid-row[data-name="${row.name}"]`);
-            row_element.addClass('generation-approved');
-        });
-    }, 500);
-}
-
+// Show detailed generation summary
 function show_generation_summary(frm) {
     let total_stones = frm.doc.stone_details ? frm.doc.stone_details.length : 0;
     let total_volume = 0;
     let stone_types = {};
     
+    // Calculate statistics
     if (frm.doc.stone_details) {
         frm.doc.stone_details.forEach(function(row) {
             if (row.volume) {
@@ -342,35 +263,46 @@ function show_generation_summary(frm) {
         });
     }
     
+    // Generate stone types list
     let stone_types_html = '';
-    Object.keys(stone_types).forEach(function(type) {
-        stone_types_html += `<li><strong>${type}:</strong> ${stone_types[type]} stones</li>`;
-    });
+    if (Object.keys(stone_types).length > 0) {
+        stone_types_html = Object.entries(stone_types).map(([type, count]) => 
+            `<li><strong>${type}:</strong> ${count} stones</li>`
+        ).join('');
+    } else {
+        stone_types_html = '<li>No stone types found</li>';
+    }
     
     let summary_html = `
-        <div class="generation-summary">
-            <h4>📈 Generation Summary - ${frm.doc.form_number}</h4>
+        <div class="generation-detailed-summary">
+            <h4>📈 Detailed Generation Summary - ${frm.doc.form_number}</h4>
+            
             <div class="row">
                 <div class="col-sm-6">
-                    <div class="alert alert-info">
-                        <h5>📊 Statistics</h5>
-                        <ul>
-                            <li><strong>Total Stones:</strong> ${total_stones}</li>
-                            <li><strong>Total Volume:</strong> ${total_volume.toFixed(2)} CFT</li>
-                            <li><strong>Average Volume:</strong> ${total_stones > 0 ? (total_volume/total_stones).toFixed(2) : 0} CFT per stone</li>
-                            <li><strong>Project:</strong> ${frm.doc.project_name || 'N/A'}</li>
-                            <li><strong>Region:</strong> ${frm.doc.cutting_region || 'N/A'}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6">
                     <div class="alert alert-success">
-                        <h5>🏗️ Stone Types</h5>
-                        <ul>
-                            ${stone_types_html || '<li>No stone types found</li>'}
+                        <h5>📊 Statistics</h5>
+                        <ul style="margin-bottom: 0;">
+                            <li><strong>Approved Stones:</strong> ${total_stones}</li>
+                            <li><strong>Total Volume:</strong> ${total_volume.toFixed(3)} CFT</li>
+                            <li><strong>Average Volume:</strong> ${total_stones > 0 ? (total_volume/total_stones).toFixed(3) : 0} CFT per stone</li>
+                            <li><strong>Project:</strong> ${frm.doc.project_name || 'N/A'}</li>
+                            <li><strong>Cutting Region:</strong> ${frm.doc.cutting_region || 'N/A'}</li>
                         </ul>
                     </div>
                 </div>
+                
+                <div class="col-sm-6">
+                    <div class="alert alert-info">
+                        <h5>🏗️ Stone Types</h5>
+                        <ul style="margin-bottom: 0;">
+                            ${stone_types_html}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-primary">
+                <strong>🎯 Status:</strong> All ${total_stones} stones are verified and ready for generation processing.
             </div>
         </div>
     `;
@@ -382,33 +314,150 @@ function show_generation_summary(frm) {
     });
 }
 
-function export_to_excel(frm) {
-    // Prepare data for export
-    let data = [];
-    
-    if (frm.doc.stone_details) {
-        frm.doc.stone_details.forEach(function(row, index) {
-            data.push({
-                'Sr No': index + 1,
-                'Stone Name': row.stone_name || '',
-                'Stone Code': row.stone_code || '',
-                'Range': row.range || '',
-                'L1': row.l1 || '',
-                'L2': row.l2 || '',
-                'B1': row.b1 || '',
-                'B2': row.b2 || '',
-                'H1': row.h1 || '',
-                'H2': row.h2 || '',
-                'Volume (CFT)': row.volume || ''
-            });
+// Debug and helper functions
+function debug_verification_search(frm) {
+    if (!frm.doc.form_number) {
+        frappe.msgprint({
+            title: __('Form Number Required'),
+            message: __('Please enter a form number to debug the verification search.'),
+            indicator: 'orange'
         });
+        return;
     }
     
-    // Use frappe's built-in export functionality
-    frappe.tools.downloadify(data, null, `Size_List_Generation_${frm.doc.form_number}_${frappe.datetime.now_date()}`);
-    
-    frappe.show_alert({
-        message: __('Excel export initiated for {0} stones', [data.length]),
-        indicator: 'green'
+    frappe.call({
+        method: "baps.baps.doctype.size_list_generation.size_list_generation.debug_verification_search",
+        args: {
+            form_number: frm.doc.form_number
+        },
+        callback: function(r) {
+            if (r && r.message && r.message.success) {
+                let results = r.message.results;
+                let debug_html = `
+                    <div class="debug-verification-results">
+                        <h5>🔍 Verification Search Debug Results for: "${results.search_term}"</h5>
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h6>📋 Exact Form Number Match:</h6>
+                                ${results.exact_form_number_match ? 
+                                    `<div class="alert alert-success">
+                                        ✅ Found: ${results.exact_form_number_match.name}<br>
+                                        Form: ${results.exact_form_number_match.form_number}<br>
+                                        Created: ${results.exact_form_number_match.creation}
+                                    </div>` : 
+                                    `<div class="alert alert-warning">❌ No exact match found</div>`
+                                }
+                                
+                                <h6>📝 Exact Name Match:</h6>
+                                ${results.exact_name_match ? 
+                                    `<div class="alert alert-info">✅ Document exists with this name</div>` : 
+                                    `<div class="alert alert-warning">❌ No document with this name</div>`
+                                }
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <h6>🔎 Like Matches:</h6>
+                                ${results.like_matches.length > 0 ? 
+                                    `<ul>` + results.like_matches.map(match => 
+                                        `<li>${match.name} (Form: ${match.form_number}) - ${match.creation}</li>`
+                                    ).join('') + `</ul>` : 
+                                    `<div class="alert alert-warning">❌ No partial matches</div>`
+                                }
+                            </div>
+                        </div>
+                        
+                        <h6>📚 Available Size List Verifications (Latest 10):</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead><tr><th>Document Name</th><th>Form Number</th><th>Created</th></tr></thead>
+                                <tbody>
+                                    ${results.all_verifications.map(sv => 
+                                        `<tr><td>${sv.name}</td><td>${sv.form_number || 'Not Set'}</td><td>${sv.creation}</td></tr>`
+                                    ).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                
+                frappe.msgprint({
+                    title: __('Verification Search Debug'),
+                    message: debug_html,
+                    indicator: 'blue'
+                });
+            } else {
+                frappe.msgprint({
+                    title: __('Debug Error'),
+                    message: r.message.message || 'Could not run verification search debug',
+                    indicator: 'red'
+                });
+            }
+        }
+    });
+}
+
+function show_available_verifications(frm) {
+    frappe.call({
+        method: "frappe.client.get_list",
+        args: {
+            doctype: "Size List Verification",
+            fields: ["name", "form_number", "creation"],
+            order_by: "creation desc",
+            limit_page_length: 20
+        },
+        callback: function(r) {
+            if (r && r.message) {
+                let verifications_html = '<div class="available-verifications"><h5>Available Size List Verifications:</h5><ul>';
+                
+                r.message.forEach(function(doc) {
+                    verifications_html += `<li><strong>${doc.name}</strong> 
+                                    ${doc.form_number ? `(Form: ${doc.form_number})` : '(No form number)'} 
+                                    - Created: ${doc.creation}</li>`;
+                });
+                
+                verifications_html += '</ul></div>';
+                
+                frappe.msgprint({
+                    title: __('Available Size List Verifications'),
+                    message: verifications_html,
+                    indicator: 'blue'
+                });
+            }
+        }
+    });
+}
+
+function show_verification_not_found_dialog(frm, error_message) {
+    frappe.msgprint({
+        title: __('Size List Verification Not Found'),
+        message: `
+            <div class="alert alert-warning">
+                <strong>No Size List Verification found with Form Number: ${frm.doc.form_number}</strong>
+                <br><br>
+                ${error_message}
+                <br><br>
+                <strong>Suggestions:</strong>
+                <ul>
+                    <li>Check if the form number is correct</li>
+                    <li>Make sure Size List Verification exists and has been saved</li>
+                    <li>Ensure some stones are marked as "Verified" in the verification</li>
+                    <li>Use the debug tools to check available verifications</li>
+                </ul>
+            </div>
+        `,
+        indicator: 'orange',
+        primary_action: {
+            label: __('Show Available Verifications'),
+            action: function() {
+                show_available_verifications(frm);
+            }
+        },
+        secondary_action: {
+            label: __('Debug Search'),
+            action: function() {
+                debug_verification_search(frm);
+            }
+        }
     });
 }

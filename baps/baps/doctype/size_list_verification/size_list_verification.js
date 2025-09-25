@@ -10,9 +10,6 @@
 // Copyright (c) 2025, Ayush Patel and contributors
 // For license information, please see license.txt
 
-// Copyright (c) 2025, Ayush Patel and contributors
-// For license information, please see license.txt
-
 frappe.ui.form.on('Size List Verification', {
     refresh: function(frm) {
         // Add custom CSS for verification status
