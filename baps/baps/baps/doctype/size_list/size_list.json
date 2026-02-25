@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "autoname": "field:stone_code",
+ "creation": "2025-11-07 11:10:27.094959",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "form_number",
+  "baps_project",
+  "main_part",
+  "sub_part",
+  "stone_type",
+  "column_break_qcba",
+  "cutting_region",
+  "stone_name",
+  "stone_code",
+  "creation_ref",
+  "creation_item",
+  "section_break_yady",
+  "l1",
+  "l2",
+  "column_break_clsl",
+  "b1",
+  "b2",
+  "column_break_wvgj",
+  "h1",
+  "h2",
+  "volume",
+  "status",
+  "split",
+  "split_rows",
+  "parent_stone",
+  "material_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Stone Code",
+   "read_only": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "stone_name",
+   "fieldtype": "Data",
+   "label": "Stone Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "label": "L1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "label": "L2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "label": "B1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "label": "B2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "label": "H1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "label": "H2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume",
+   "read_only": 1
+  },
+  {
+   "default": "Not Started",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Not Started\nUnder Cutting\nUnder Order\nUnder Pre Carving Inspection",
+   "read_only": 1
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "BAPS Project",
+   "options": "Baps Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Main Part",
+   "options": "Main Part",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Sub Part",
+   "options": "Sub Part",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cutting_region",
+   "fieldtype": "Link",
+   "label": "Cutting Region",
+   "options": "Region",
+   "read_only": 1
+  },
+  {
+   "fieldname": "creation_ref",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Size List Creation Ref",
+   "options": "Size List Creation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "creation_item",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Creation Item Row Ref",
+   "options": "Size List Creation Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qcba",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_yady",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_clsl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wvgj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "split",
+   "fieldtype": "Button",
+   "label": "Split"
+  },
+  {
+   "fieldname": "form_number",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Size List Form No.",
+   "options": "Size List Form"
+  },
+  {
+   "fieldname": "split_rows",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Split Pieces",
+   "options": "Size List Split Part"
+  },
+  {
+   "fieldname": "parent_stone",
+   "fieldtype": "Link",
+   "label": "Parent Stone",
+   "options": "Size List",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_type",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-05 17:10:14.692786",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

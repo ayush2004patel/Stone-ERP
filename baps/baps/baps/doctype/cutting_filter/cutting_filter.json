@@ -1,0 +1,163 @@
+{
+  "actions": [],
+  "allow_rename": 1,
+  "autoname": "field:filter_no",
+  "creation": "2025-11-13 10:20:38.529747",
+  "doctype": "DocType",
+  "editable_grid": 1,
+  "engine": "InnoDB",
+  "field_order": [
+    "filter_no",
+    "project",
+    "main_part",
+    "sub_part",
+    "stone_name",
+    "column_break_zyvp",
+    "l1_filter_type",
+    "l1_below",
+    "l1_between_from",
+    "l1_between_to",
+    "b1_filter_type",
+    "b1_below",
+    "b1_between_from",
+    "b1_between_to",
+    "h1_filter_type",
+    "h1_below",
+    "h1_between_from",
+    "h1_between_to"
+  ],
+  "fields": [
+    {
+      "fieldname": "filter_no",
+      "fieldtype": "Data",
+      "label": "Filter No.",
+      "unique": 1
+    },
+    {
+      "fieldname": "project",
+      "fieldtype": "Data",
+      "label": "Project"
+    },
+    {
+      "fieldname": "main_part",
+      "fieldtype": "Data",
+      "label": "Main Part"
+    },
+    {
+      "fieldname": "sub_part",
+      "fieldtype": "Small Text",
+      "label": "Sub Part"
+    },
+    {
+      "fieldname": "stone_name",
+      "fieldtype": "Data",
+      "label": "Stone Name"
+    },
+    {
+      "fieldname": "column_break_zyvp",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "l1_filter_type",
+      "fieldtype": "Select",
+      "label": "L1 (Length) Filter",
+      "options": "\nNone\nBelow\nBetween",
+      "default": "None"
+    },
+    {
+      "fieldname": "l1_below",
+      "fieldtype": "Float",
+      "label": "L1 Below",
+      "hidden": 1
+    },
+    {
+      "fieldname": "l1_between_from",
+      "fieldtype": "Float",
+      "label": "L1 From",
+      "hidden": 1
+    },
+    {
+      "fieldname": "l1_between_to",
+      "fieldtype": "Float",
+      "label": "L1 To",
+      "hidden": 1
+    },
+    {
+      "fieldname": "b1_filter_type",
+      "fieldtype": "Select",
+      "label": "B1 (Breadth) Filter",
+      "options": "\nNone\nBelow\nBetween",
+      "default": "None"
+    },
+    {
+      "fieldname": "b1_below",
+      "fieldtype": "Float",
+      "label": "B1 Below",
+      "hidden": 1
+    },
+    {
+      "fieldname": "b1_between_from",
+      "fieldtype": "Float",
+      "label": "B1 From",
+      "hidden": 1
+    },
+    {
+      "fieldname": "b1_between_to",
+      "fieldtype": "Float",
+      "label": "B1 To",
+      "hidden": 1
+    },
+    {
+      "fieldname": "h1_filter_type",
+      "fieldtype": "Select",
+      "label": "H1 (Height) Filter",
+      "options": "\nNone\nBelow\nBetween",
+      "default": "None"
+    },
+    {
+      "fieldname": "h1_below",
+      "fieldtype": "Float",
+      "label": "H1 Below",
+      "hidden": 1
+    },
+    {
+      "fieldname": "h1_between_from",
+      "fieldtype": "Float",
+      "label": "H1 From",
+      "hidden": 1
+    },
+    {
+      "fieldname": "h1_between_to",
+      "fieldtype": "Float",
+      "label": "H1 To",
+      "hidden": 1
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "links": [],
+  "modified": "2025-11-13 15:00:02.189087",
+  "modified_by": "Administrator",
+  "module": "Baps",
+  "name": "Cutting Filter",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "row_format": "Dynamic",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "states": []
+}

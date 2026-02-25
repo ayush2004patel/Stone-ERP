@@ -1,0 +1,44 @@
+/* User Proxy Manager Page Styles */
+
+.proxy-manager-container {
+    padding: 20px;
+}
+
+.proxy-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.proxy-card h3 {
+    margin-top: 0;
+    color: #36414c;
+}
+
+.proxy-table {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+}

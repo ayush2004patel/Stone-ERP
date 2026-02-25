@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "RE-.####",
+ "creation": "2025-11-13 15:08:17.324745",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "inspection_type",
+  "current_site",
+  "request_status",
+  "from_status",
+  "column_break_hsme",
+  "date",
+  "rejected_by",
+  "status",
+  "column_break_skrr",
+  "number",
+  "inspection_demo",
+  "rejection_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block/Stone no"
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Inspection Type"
+  },
+  {
+   "fieldname": "rejected_by",
+   "fieldtype": "Data",
+   "label": "Rejected By"
+  },
+  {
+   "fieldname": "current_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Currrent Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "inspection_demo",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Inspection Demo",
+   "options": "Inspection Demo"
+  },
+  {
+   "fieldname": "column_break_hsme",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_skrr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "request_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Request status",
+   "options": "\nPending\nAccepted\nRejected"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "To Status",
+   "options": "\nAvailable\nReject Request\nAccept and Cannot Use\nAccept and Can Use",
+   "read_only": 1
+  },
+  {
+   "fieldname": "from_status",
+   "fieldtype": "Data",
+   "label": "From Status "
+  },
+  {
+   "fieldname": "rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Rejection Reason",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-29 11:45:06.773352",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Rejection Evaluation",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-29 01:27:16.871355",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_code",
+  "parent_stone",
+  "block_number",
+  "size_list",
+  "column_break_ajtk",
+  "activity_type",
+  "description",
+  "remarks",
+  "section_break_okup",
+  "old_status",
+  "new_status",
+  "status_changed",
+  "section_break_jyej",
+  "reference_doctype",
+  "reference_docname",
+  "section_break_nbxt",
+  "performed_by",
+  "performed_on",
+  "system_generated"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "label": "Stone Code"
+  },
+  {
+   "fieldname": "parent_stone",
+   "fieldtype": "Data",
+   "label": "Parent Stone"
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Link",
+   "label": "Block Number",
+   "options": "Block"
+  },
+  {
+   "fieldname": "size_list",
+   "fieldtype": "Link",
+   "label": "Size List",
+   "options": "Size List"
+  },
+  {
+   "fieldname": "column_break_ajtk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "activity_type",
+   "fieldtype": "Select",
+   "label": "Activity Type",
+   "options": "SIZELIST_FORM_CREATED\nSIZELIST_VERIFIED\nSIZELIST_RETURNED\nSIZELIST_GENERATED\nSIZELIST_PUBLISHED\nSTATUS_CHANGED\nSTONE_CREATED\nSTONE_SPLIT\nSTONE_SPLIT_REVERTED\nASSIGNED_TO_CUTTING\nCUTTING_STARTED\nCUTTING_COMPLETED"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_okup",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "old_status",
+   "fieldtype": "Data",
+   "label": "Old Status"
+  },
+  {
+   "fieldname": "new_status",
+   "fieldtype": "Data",
+   "label": "New Status"
+  },
+  {
+   "default": "0",
+   "fieldname": "status_changed",
+   "fieldtype": "Check",
+   "label": "Status Changed"
+  },
+  {
+   "fieldname": "section_break_jyej",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "label": "Reference Doctype",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "reference_docname",
+   "fieldtype": "Dynamic Link",
+   "label": "Reference Document",
+   "options": "reference_doctype"
+  },
+  {
+   "fieldname": "section_break_nbxt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "performed_by",
+   "fieldtype": "Link",
+   "label": "Performed By",
+   "options": "User"
+  },
+  {
+   "fieldname": "performed_on",
+   "fieldtype": "Datetime",
+   "label": "Performed On"
+  },
+  {
+   "default": "0",
+   "fieldname": "system_generated",
+   "fieldtype": "Check",
+   "label": "System Generated"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-03 15:35:32.758375",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Stone Activity Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,1 @@
+# User Proxy Detail DocType

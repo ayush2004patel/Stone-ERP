@@ -1,0 +1,344 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:form_number",
+ "creation": "2025-08-29 12:12:37.228042",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "form_number",
+  "column_break_ygma",
+  "prep_date",
+  "column_break_mkhk",
+  "project",
+  "section_break_pslu",
+  "baps_project",
+  "baps_project_verified",
+  "column_break_felc",
+  "main_part",
+  "main_part_verified",
+  "column_break_womk",
+  "sub_part",
+  "sub_part_verified",
+  "section_break_adio",
+  "stone_type",
+  "stone_type_verified",
+  "column_break_zgih",
+  "cutting_region",
+  "cutting_region_verified",
+  "column_break_uevp",
+  "total_volume",
+  "child_rows_verified",
+  "section_break_process",
+  "dry_fitting",
+  "polishing",
+  "column_break_process",
+  "chemical",
+  "carving",
+  "section_break_txix",
+  "stone_details",
+  "section_break_qxve",
+  "prepared_by",
+  "data_eipo",
+  "column_break_uklj",
+  "checked_by",
+  "data_yptw",
+  "column_break_akpv",
+  "approved_date",
+  "tab_2_tab",
+  "table_item"
+ ],
+ "fields": [
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "options": "Baps Project",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "baps_project_verified",
+   "fieldtype": "Check",
+   "label": "Project "
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Main Part",
+   "options": "Main Part",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "main_part_verified",
+   "fieldtype": "Check",
+   "label": "Main Part "
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sub Part",
+   "options": "Sub Part",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sub_part_verified",
+   "fieldtype": "Check",
+   "label": "Sub Part "
+  },
+  {
+   "fieldname": "form_number",
+   "fieldtype": "Data",
+   "label": "Form Number",
+   "read_only_depends_on": "eval:(parent.workflow_state != 'Draft' && doc.form_number)",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "prepared_by",
+   "fieldtype": "Link",
+   "label": "Prepared By",
+   "options": "User"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Checked By",
+   "options": "User"
+  },
+  {
+   "fieldname": "total_volume",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "Total Volume (CFT)"
+  },
+  {
+   "fieldname": "section_break_process",
+   "fieldtype": "Section Break",
+   "label": "Process Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing",
+   "fieldtype": "Check",
+   "label": "Polishing"
+  },
+  {
+   "default": "0",
+   "fieldname": "chemical",
+   "fieldtype": "Check",
+   "label": "Chemical"
+  },
+  {
+   "fieldname": "column_break_process",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "dry_fitting",
+   "fieldtype": "Check",
+   "label": "Dry Fitting"
+  },
+  {
+   "default": "0",
+   "fieldname": "carving",
+   "fieldtype": "Check",
+   "label": "Carving"
+  },
+  {
+   "fieldname": "section_break_txix",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stone_details",
+   "fieldtype": "Table",
+   "label": "Stone Details",
+   "options": "Size List Details"
+  },
+  {
+   "fieldname": "prep_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Preparation Date",
+   "read_only_depends_on": "eval:(parent.workflow_state != 'Draft' && doc.prep_date)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stone_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Material Type",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "stone_type_verified",
+   "fieldtype": "Check",
+   "label": "Material Type "
+  },
+  {
+   "fieldname": "cutting_region",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Cutting Region",
+   "options": "Region",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cutting_region_verified",
+   "fieldtype": "Check",
+   "label": "Cutting Region "
+  },
+  {
+   "default": "Today",
+   "fieldname": "approved_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Approved Date"
+  },
+  {
+   "fieldname": "section_break_qxve",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_akpv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uklj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "prepared_by.username",
+   "fieldname": "data_eipo",
+   "fieldtype": "Data"
+  },
+  {
+   "fetch_from": "checked_by.username",
+   "fieldname": "data_yptw",
+   "fieldtype": "Data",
+   "hidden": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "child_rows_verified",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Child Rows Verified"
+  },
+  {
+   "fieldname": "column_break_ygma",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mkhk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pslu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_felc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_womk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_adio",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zgih",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uevp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "hidden": 1,
+   "label": "Tab 2"
+  },
+  {
+   "fieldname": "table_item",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "options": "Size List Creation Item"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-25 21:24:17.986349",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Form",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Size List Data Checker",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Size List Data Entry Operator",
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Size List Project Manager",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

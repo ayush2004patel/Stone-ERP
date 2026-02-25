@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "autoname": ".##",
+ "creation": "2025-09-22 15:11:39.169704",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_smxo",
+  "physical_book_series",
+  "column_break_hnnd",
+  "last_generated_book",
+  "section_break_nunk",
+  "range_of_gate_pass_books",
+  "column_break_hwgp",
+  "status",
+  "quantity_of_gate_passes"
+ ],
+ "fields": [
+  {
+   "fieldname": "quantity_of_gate_passes",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity of Gate Passes",
+   "read_only_depends_on": "doc.status == 'Completed'",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nCompleted",
+   "read_only": 1
+  },
+  {
+   "fieldname": "physical_book_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Physical Book Series(if applicable)"
+  },
+  {
+   "fieldname": "range_of_gate_pass_books",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Range of Gate Pass Books",
+   "read_only_depends_on": "doc.status == 'Completed'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_generated_book",
+   "fieldtype": "Data",
+   "label": "Last Generated book",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_nunk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hwgp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_smxo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hnnd",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-19 15:27:28.723406",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Generate Gate Pass Books",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "ASC",
+ "states": []
+}

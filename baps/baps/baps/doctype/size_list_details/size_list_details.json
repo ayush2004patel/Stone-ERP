@@ -1,0 +1,214 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 11:57:52.931263",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_name",
+  "stone_name_verified",
+  "stone_code",
+  "stone_code_verified",
+  "range",
+  "range_verified",
+  "column_break_kdid",
+  "l1",
+  "l1_verified",
+  "l2",
+  "l2_verified",
+  "b1",
+  "b1_verified",
+  "column_break_guct",
+  "b2",
+  "b2_verified",
+  "h1",
+  "h1_verified",
+  "h2",
+  "h2_verified",
+  "volume",
+  "duplicate_flag",
+  "show_duplicates"
+ ],
+ "fields": [
+  {
+   "fetch_from": "stone_code.stone_name",
+   "fieldname": "stone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Name",
+   "options": "Stone Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "stone_name_verified",
+   "fieldtype": "Check",
+   "label": "Name ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume (CFT)"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "L1",
+   "non_negative": 1,
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "l1_verified",
+   "fieldtype": "Check",
+   "label": "L1 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "l2_verified",
+   "fieldtype": "Check",
+   "label": "L2 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "B1",
+   "non_negative": 1,
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "b1_verified",
+   "fieldtype": "Check",
+   "label": "B1 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "b2_verified",
+   "fieldtype": "Check",
+   "label": "B2 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "H1",
+   "non_negative": 1,
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "h1_verified",
+   "fieldtype": "Check",
+   "label": "H1 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2",
+   "non_negative": 1,
+   "precision": "2",
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "h2_verified",
+   "fieldtype": "Check",
+   "label": "H2 ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stone Code ",
+   "options": "Stone Name",
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "stone_code_verified",
+   "fieldtype": "Check",
+   "label": "Code ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "range",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Range",
+   "read_only_depends_on": "eval:doc.verification_status==\"Verified\"\r\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "range_verified",
+   "fieldtype": "Check",
+   "label": "Range ",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Size List Data Entry Operator\")"
+  },
+  {
+   "fieldname": "column_break_kdid",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_guct",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:(doc.duplicate_flag == 1) && (['Under Rechange'].includes(parent.workflow_state)) && (frappe.user_roles.includes('Size List Data Entry Operator') || frappe.user_roles.includes('Size List Data Checker') || frappe.user_roles.includes('Administrator'))",
+   "fieldname": "duplicate_flag",
+   "fieldtype": "Check",
+   "label": "Duplicate Flag",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:(frappe.user_roles.includes('Size List Data Entry Operator') && parent.workflow_state === 'Under Rechange') || frappe.user_roles.includes('Administrator')",
+   "fieldname": "show_duplicates",
+   "fieldtype": "Button",
+   "label": "Show Duplicates"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-03 11:20:06.134304",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

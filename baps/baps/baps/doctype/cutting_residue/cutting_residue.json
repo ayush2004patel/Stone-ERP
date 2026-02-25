@@ -1,0 +1,93 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-19 14:45:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tvzv",
+  "column_break_ptfl",
+  "block_number",
+  "section_break_main",
+  "l1",
+  "l2",
+  "b1",
+  "column_break_aeuq",
+  "b2",
+  "h1",
+  "h2",
+  "residue_volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_main",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "label": "L1"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "label": "L2"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "label": "B1"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "label": "B2"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "label": "H1"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "label": "H2"
+  },
+  {
+   "fieldname": "column_break_ptfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_aeuq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tvzv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "residue_volume",
+   "fieldtype": "Float",
+   "label": "Residue Volume",
+   "read_only": 1
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block Number"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-04 11:54:25.286279",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Residue",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

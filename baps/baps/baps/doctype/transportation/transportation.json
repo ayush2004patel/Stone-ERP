@@ -1,0 +1,307 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:gate_pass_no",
+ "creation": "2025-08-29 12:33:17.271806",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_oyvr",
+  "gate_pass_bookno",
+  "column_break_kpcl",
+  "gate_pass_no",
+  "column_break_oxwu",
+  "from_site",
+  "column_break_qayx",
+  "to_site",
+  "section_break_jvcy",
+  "date",
+  "column_break_cgtg",
+  "sender_name",
+  "column_break_qldx",
+  "vehicle_service_provider",
+  "column_break_dglm",
+  "vehicle_number",
+  "section_break_bxox",
+  "driver_name",
+  "driver_name_manual",
+  "column_break_qxyt",
+  "driver_mobile_no",
+  "driver_mobile_no_manual",
+  "section_break_xthw",
+  "baps_project",
+  "column_break_dwza",
+  "item_type",
+  "show_items",
+  "section_break_yykp",
+  "transport_item",
+  "section_break_dgfd",
+  "test",
+  "additional_items",
+  "section_break_cieb",
+  "status",
+  "column_break_rjoi"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "fieldname": "section_break_bxox",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "from_site",
+   "fieldtype": "Link",
+   "label": "From Site",
+   "options": "Site",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "fieldname": "to_site",
+   "fieldtype": "Link",
+   "label": "To Site",
+   "options": "Site",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "fieldname": "section_break_jvcy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "label": "Vehicle /Container Number",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "depends_on": "eval: doc.vehicle_service_provider == 'Baps'",
+   "fieldname": "driver_name",
+   "fieldtype": "Link",
+   "label": "Driver Name",
+   "options": "Baps Driver Details",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")"
+  },
+  {
+   "fieldname": "column_break_cgtg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sender_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Sender",
+   "read_only": 1,
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "fieldname": "gate_pass_no",
+   "fieldtype": "Link",
+   "label": "Gate Pass No",
+   "options": "Gate Pass",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0",
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_cieb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "vehicle_service_provider",
+   "fieldtype": "Link",
+   "label": "Vehicle Service Provider",
+   "options": "Vehicle Service Provider",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  },
+  {
+   "fieldname": "column_break_rjoi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qxyt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Transportation Sender\") || frappe.user.has_role(\"Administrator\")",
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")"
+  },
+  {
+   "bold": 1,
+   "depends_on": "eval:frappe.user_roles && (frappe.user_roles.includes('Transportation Sender') || frappe.user_roles.includes('Administrator'))",
+   "fieldname": "show_items",
+   "fieldtype": "Button",
+   "label": "Show Items",
+   "read_only_depends_on": "eval:frappe.user_roles && frappe.user_roles.includes('Transportation Receiver')"
+  },
+  {
+   "fieldname": "section_break_xthw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_dwza",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Transportation Sender\") || frappe.user.has_role(\"Administrator\")",
+   "fieldname": "item_type",
+   "fieldtype": "Link",
+   "label": "Item Type",
+   "options": "Item Type",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")"
+  },
+  {
+   "fieldname": "column_break_kpcl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_oxwu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qayx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qldx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dglm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval: doc.vehicle_service_provider == 'Baps'",
+   "fetch_from": "driver_name.driver_mobile_no",
+   "fieldname": "driver_mobile_no",
+   "fieldtype": "Data",
+   "label": "Driver Mobile No",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")"
+  },
+  {
+   "fieldname": "section_break_yykp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "transport_item",
+   "fieldtype": "Table",
+   "label": "Transport Item",
+   "options": "Transportation Status R"
+  },
+  {
+   "fieldname": "section_break_dgfd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "depends_on": "eval: (frappe.user.has_role('Transportation Receiver') && doc.test) || ((frappe.user.has_role('Transportation Sender') || frappe.user.has_role('Administrator')) && doc.additional_items && doc.additional_items.length > 0)",
+   "fieldname": "additional_items",
+   "fieldtype": "Table",
+   "label": "Additional Item Received",
+   "options": "Additional Material Received"
+  },
+  {
+   "fieldname": "section_break_oyvr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Pending To Receive",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending To Receive\nFull Received\nReceiving\nPartially Received",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")",
+   "fieldname": "test",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Additional Item Received"
+  },
+  {
+   "depends_on": "eval: doc.vehicle_service_provider != 'Baps'",
+   "fieldname": "driver_name_manual",
+   "fieldtype": "Data",
+   "label": "Driver Name",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\")"
+  },
+  {
+   "depends_on": "eval: doc.vehicle_service_provider != 'Baps'",
+   "fieldname": "driver_mobile_no_manual",
+   "fieldtype": "Phone",
+   "label": "Driver Mobile No"
+  },
+  {
+   "fieldname": "gate_pass_bookno",
+   "fieldtype": "Link",
+   "label": "Gate Pass BookNo",
+   "options": "Gate Pass Book",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") || doc.transport_item && doc.transport_item.length > 0"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-21 16:53:39.526580",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transportation",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Transportation Sender",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Transportation Receiver",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

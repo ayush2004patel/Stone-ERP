@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-06 11:59:02.771129",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project_name",
+  "stone_no",
+  "l1",
+  "column_break_licb",
+  "l2",
+  "b1",
+  "b2",
+  "column_break_ulvj",
+  "h1",
+  "h2",
+  "volume"
+ ],
+ "fields": [
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_no",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Stone No.",
+   "options": "Size List",
+   "read_only": 1
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L1",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_licb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B1",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ulvj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H1",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume",
+   "precision": "2",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-29 14:42:17.448959",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Plan Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

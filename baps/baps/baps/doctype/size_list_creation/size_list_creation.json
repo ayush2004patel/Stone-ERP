@@ -1,0 +1,213 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:form_number",
+ "creation": "2025-09-19 14:29:05.223297",
+ "default_view": "Report",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_wyiy",
+  "form_number",
+  "baps_project",
+  "project_name",
+  "column_break_dsal",
+  "prep_date",
+  "stone_type",
+  "main_part",
+  "column_break_uoie",
+  "cutting_region",
+  "sub_part",
+  "cutting_planning_id",
+  "section_break_vvov",
+  "polishing",
+  "dry_fitting",
+  "column_break_ddgf",
+  "carving",
+  "chemicaling",
+  "section_break_pnlg",
+  "stone_details",
+  "section_break_dfpm",
+  "column_break_gobb",
+  "order_id",
+  "stone_id",
+  "selection_id",
+  "lot_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_details",
+   "fieldtype": "Table",
+   "label": "Size LIst ",
+   "options": "Size List Creation Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_vvov",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "polishing",
+   "fieldtype": "Check",
+   "label": "Polishing Required",
+   "read_only_depends_on": "eval:frappe.user_roles.includes(\"Project Manager\")\n"
+  },
+  {
+   "default": "0",
+   "fieldname": "dry_fitting",
+   "fieldtype": "Check",
+   "label": "Dry Fitting Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "carving",
+   "fieldtype": "Check",
+   "label": "Carving Required"
+  },
+  {
+   "default": "0",
+   "fieldname": "chemicaling",
+   "fieldtype": "Check",
+   "label": "Chemical Required"
+  },
+  {
+   "fieldname": "column_break_ddgf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wyiy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "prep_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Prep Date"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "fetch_from": "baps_project.project_name",
+   "fieldname": "project_name",
+   "fieldtype": "Data",
+   "label": "Project Name"
+  },
+  {
+   "fieldname": "stone_type",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "label": "Main Part",
+   "options": "Main Part"
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "label": "Sub Part",
+   "options": "Sub Part"
+  },
+  {
+   "fieldname": "cutting_planning_id",
+   "fieldtype": "Link",
+   "label": "Cutting Planning ID",
+   "options": "Cutting Planning",
+   "read_only": 1
+  },
+  {
+   "fieldname": "form_number",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Size list Form No.",
+   "options": "Size List Form",
+   "unique": 1
+  },
+  {
+   "fieldname": "cutting_region",
+   "fieldtype": "Link",
+   "label": "Cutting Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "column_break_dsal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uoie",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pnlg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_dfpm",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "stone_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Stone"
+  },
+  {
+   "fieldname": "order_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Order"
+  },
+  {
+   "fieldname": "selection_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Selection "
+  },
+  {
+   "fieldname": "lot_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Lot"
+  },
+  {
+   "fieldname": "column_break_gobb",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-06 15:58:54.735135",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Creation",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

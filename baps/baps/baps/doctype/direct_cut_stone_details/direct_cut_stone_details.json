@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-07 18:04:52.796189",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_fysq",
+  "stone_code",
+  "l1",
+  "l2",
+  "b1",
+  "b2",
+  "h1",
+  "h2",
+  "volume",
+  "weight",
+  "main_part",
+  "sub_part"
+ ],
+ "fields": [
+  {
+   "fieldname": "l1",
+   "fieldtype": "Float",
+   "label": "L1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "label": "L2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Float",
+   "label": "B1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "label": "B2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Float",
+   "label": "H1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "label": "H2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume (CFT)",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "label": "Stone Code",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "main_part",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Main Part",
+   "options": "Main Part"
+  },
+  {
+   "fieldname": "sub_part",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Sub Part",
+   "options": "Sub Part"
+  },
+  {
+   "fieldname": "section_break_fysq",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-15 11:29:51.687091",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Direct Cut Stone Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

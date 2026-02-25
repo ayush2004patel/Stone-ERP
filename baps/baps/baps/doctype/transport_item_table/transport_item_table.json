@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-03 14:52:20.610956",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_no",
+  "column_break_gppf",
+  "item_type",
+  "column_break_rucj",
+  "baps_project",
+  "column_break_dhvp",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_gppf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rucj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Type",
+   "options": "Item Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Baps Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item_no",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "label": "Item No"
+  },
+  {
+   "fieldname": "column_break_dhvp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Created",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Created",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-09 17:58:34.143203",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Transport Item Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

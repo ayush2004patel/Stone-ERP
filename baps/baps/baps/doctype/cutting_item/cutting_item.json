@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-19 14:22:39.696470",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_project",
+  "column_break_fzyg",
+  "stone_number",
+  "cut_ignore"
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_project",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cut_ignore",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "CUT / IGNORE",
+   "options": "\nCUT\nIGNORE"
+  },
+  {
+   "fieldname": "column_break_fzyg",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-05 11:12:03.947226",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Cutting Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:site_name",
+ "creation": "2025-08-29 11:40:42.536844",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "site_name",
+  "column_break_rang",
+  "region",
+  "section_break_tics",
+  "site_type",
+  "column_break_gajj",
+  "trade_partner",
+  "section_break_uvpa",
+  "main_site"
+ ],
+ "fields": [
+  {
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Site Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "site_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Site Type",
+   "options": "Project Site\nTrade Partner Site\nWorking Site"
+  },
+  {
+   "depends_on": "eval:doc.site_type==\"Trade Partner Site\"",
+   "fieldname": "trade_partner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_gajj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_rang",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tics",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_uvpa",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "main_site",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Main Site",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-11-27 15:29:52.956141",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Site",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

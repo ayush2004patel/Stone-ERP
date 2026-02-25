@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:material_type",
+ "creation": "2025-08-29 11:45:35.892717",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "material_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Data",
+   "label": "Material Type",
+   "unique": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-09-16 10:37:22.450534",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Material Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

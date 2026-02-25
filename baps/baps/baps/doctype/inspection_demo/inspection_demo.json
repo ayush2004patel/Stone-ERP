@@ -1,0 +1,932 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Inspc-.####",
+ "creation": "2025-10-29 17:20:41.647033",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "block_inspection",
+  "column_break_hamw",
+  "pre_carving_inspection",
+  "column_break_kdpg",
+  "post_carving_inspection",
+  "section_break_nmmd",
+  "post_polishing_inspection",
+  "column_break_ypxf",
+  "direct_inspection_purchase",
+  "section_break_kvqm",
+  "post_carving",
+  "column_break_wzgt",
+  "post_polishing",
+  "section_break_aqhc",
+  "inspection_type",
+  "current_site",
+  "column_break_vdfa",
+  "inspection_date",
+  "project",
+  "column_break_rbpi",
+  "inspected_by",
+  "block_number",
+  "section_break_jktu",
+  "block_custom_code",
+  "status",
+  "column_break_htki",
+  "color",
+  "rejection_evaluation",
+  "column_break_dvsd",
+  "grain",
+  "section_break_wfcc",
+  "l1",
+  "column_break_sllm",
+  "l2",
+  "section_break_hmer",
+  "b1",
+  "column_break_kyby",
+  "b2",
+  "section_break_vfxp",
+  "h1",
+  "volume",
+  "column_break_etar",
+  "h2",
+  "wt",
+  "pre_carving_inspection_section",
+  "inspection_typee",
+  "current_sitee",
+  "statuss",
+  "column_break_xrkm",
+  "inspection_datee",
+  "projectt",
+  "column_break_yodu",
+  "inspected_byy",
+  "stone_number",
+  "section_break_hcbi",
+  "ques",
+  "post_carving_inspection_section",
+  "inspection_typeee",
+  "current_siteee",
+  "statusss",
+  "column_break_zdno",
+  "inspection_dateee",
+  "projecttt",
+  "sompura",
+  "column_break_bzmw",
+  "inspected_byyy",
+  "stone_numberr",
+  "regional_manager",
+  "section_break_eilj",
+  "que",
+  "post_polishing_inspection_section",
+  "inspection_typeeee",
+  "current_siteeee",
+  "statussss",
+  "column_break_kpbc",
+  "inspection_dateeee",
+  "projectttt",
+  "column_break_pkfa",
+  "inspected_byyyy",
+  "stone_numberrrr",
+  "section_break_jzno",
+  "quess",
+  "direct_post_carving",
+  "direct_inspection_typeeeeeee",
+  "direct_current_siteeeeeeee",
+  "statussssss",
+  "column_break_jdaj",
+  "direct_inspection_dateeeeeee",
+  "direct_projecttttttt",
+  "column_break_mpvj",
+  "direct_inspected_byyyyyyy",
+  "direct_stone_numberrrrrrrr",
+  "section_break_vixw",
+  "quesssssss",
+  "direct_post_polishing",
+  "direct_inspection_typeeeeeeee",
+  "direct_current_siteeeeeeeee",
+  "statusssssss",
+  "column_break_unwi",
+  "direct_inspection_dateeeeeeee",
+  "direct_projectttttttt",
+  "column_break_qagf",
+  "direct_inspected_byyyyyyyy",
+  "direct_stone_numberrrrrrrrrr",
+  "section_break_lhrw",
+  "quessssssss",
+  "section_break_dlhi",
+  "inspection_status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "block_inspection",
+   "fieldtype": "Button",
+   "label": "Block Inspection",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "column_break_hamw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pre_carving_inspection",
+   "fieldtype": "Button",
+   "label": "Pre Carving Inspection",
+   "permlevel": 2
+  },
+  {
+   "fieldname": "section_break_nmmd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "post_carving_inspection",
+   "fieldtype": "Button",
+   "label": "Post Carving Inspection",
+   "permlevel": 3
+  },
+  {
+   "fieldname": "column_break_ypxf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "post_polishing_inspection",
+   "fieldtype": "Button",
+   "label": "Post Polishing Inspection",
+   "permlevel": 4
+  },
+  {
+   "fieldname": "section_break_aqhc",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Block Inspection"
+  },
+  {
+   "default": "Block Inspection",
+   "fieldname": "inspection_type",
+   "fieldtype": "Data",
+   "label": "Inspection Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "block_number",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Block Number",
+   "options": "Block"
+  },
+  {
+   "fieldname": "current_site",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Current Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "column_break_vdfa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Color",
+   "options": "Block Color"
+  },
+  {
+   "fieldname": "column_break_rbpi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Data",
+   "label": "Inspected By",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "block_number.block_custom_code",
+   "fieldname": "block_custom_code",
+   "fieldtype": "Data",
+   "label": "Block Custom Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "grain",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Grain",
+   "options": "Block Grain"
+  },
+  {
+   "fieldname": "section_break_wfcc",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Block Inspection Dimensions"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "label": "L1"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "label": "B1"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "label": "H1"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sllm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "label": "L2"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "label": "B2"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "label": "H2"
+  },
+  {
+   "fieldname": "wt",
+   "fieldtype": "Float",
+   "label": "Wt"
+  },
+  {
+   "fieldname": "pre_carving_inspection_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Pre Carving Inspection"
+  },
+  {
+   "default": "Pre Carving Inspection",
+   "fieldname": "inspection_typee",
+   "fieldtype": "Data",
+   "label": "Inspection Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_number",
+   "fieldtype": "Link",
+   "label": "Stone Number",
+   "options": "Block"
+  },
+  {
+   "fieldname": "column_break_xrkm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "inspection_datee",
+   "fieldtype": "Date",
+   "label": "Inspection Date ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projectt",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "column_break_yodu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_byy",
+   "fieldtype": "Data",
+   "label": "Inspected By ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_sitee",
+   "fieldtype": "Link",
+   "label": "Current Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "post_carving_inspection_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Post Carving Inspection"
+  },
+  {
+   "default": "Post Carving Level 1 Inspection",
+   "fieldname": "inspection_typeee",
+   "fieldtype": "Data",
+   "label": "Inspection Type ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_numberr",
+   "fieldtype": "Link",
+   "label": "Stone Number ",
+   "options": "Block"
+  },
+  {
+   "fieldname": "column_break_zdno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "inspection_dateee",
+   "fieldtype": "Date",
+   "label": "Inspection Date  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "projecttt",
+   "fieldtype": "Link",
+   "label": "Project ",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "column_break_bzmw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_byyy",
+   "fieldtype": "Data",
+   "label": "Inspected By  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_siteee",
+   "fieldtype": "Link",
+   "label": "Current Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "post_polishing_inspection_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Post Polishing Inspection"
+  },
+  {
+   "default": "Post Polishing Inspection",
+   "fieldname": "inspection_typeeee",
+   "fieldtype": "Data",
+   "label": "Inspection Type  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_numberrrr",
+   "fieldtype": "Link",
+   "label": "Stone Number  ",
+   "options": "Block"
+  },
+  {
+   "fieldname": "column_break_kpbc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "projectttt",
+   "fieldtype": "Link",
+   "label": "Project ",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "column_break_pkfa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspected_byyyy",
+   "fieldtype": "Data",
+   "label": "Inspected By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "current_siteeee",
+   "fieldtype": "Link",
+   "label": "Current Site ",
+   "options": "Site"
+  },
+  {
+   "default": "Today",
+   "fieldname": "inspection_dateeee",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_hcbi",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "ques",
+   "fieldtype": "Table",
+   "label": "Ques",
+   "options": "Question Bank"
+  },
+  {
+   "fieldname": "section_break_eilj",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "que",
+   "fieldtype": "Table",
+   "label": "Ques",
+   "options": "Question Bank"
+  },
+  {
+   "fieldname": "section_break_jzno",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "quess",
+   "fieldtype": "Table",
+   "label": "Que",
+   "options": "Question Bank"
+  },
+  {
+   "fieldname": "column_break_kdpg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "direct_inspection_purchase",
+   "fieldtype": "Button",
+   "label": "Direct Inspection Purchase",
+   "permlevel": 5
+  },
+  {
+   "fieldname": "section_break_kvqm",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "column_break_wzgt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "post_carving",
+   "fieldtype": "Button",
+   "label": "Post Carving",
+   "permlevel": 6
+  },
+  {
+   "fieldname": "post_polishing",
+   "fieldtype": "Button",
+   "label": "Post Polishing",
+   "permlevel": 7
+  },
+  {
+   "fieldname": "direct_post_carving",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Direct Post Carving"
+  },
+  {
+   "default": "Direct Post Carving",
+   "fieldname": "direct_inspection_typeeeeeee",
+   "fieldtype": "Data",
+   "label": "Inspection Type ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_current_siteeeeeeee",
+   "fieldtype": "Link",
+   "label": "Current Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "column_break_jdaj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "direct_inspection_dateeeeeee",
+   "fieldtype": "Date",
+   "label": "Inspection Date  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_stone_numberrrrrrrr",
+   "fieldtype": "Link",
+   "label": "Stone Number",
+   "options": "Block"
+  },
+  {
+   "fieldname": "column_break_mpvj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "direct_inspected_byyyyyyy",
+   "fieldtype": "Data",
+   "label": "Inspected By  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_projecttttttt",
+   "fieldtype": "Link",
+   "label": "Project  ",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "section_break_vixw",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "quesssssss",
+   "fieldtype": "Table",
+   "label": "Ques",
+   "options": "Question Bank"
+  },
+  {
+   "fieldname": "direct_post_polishing",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Direct Post Polishing"
+  },
+  {
+   "default": "Direct Post Polishing",
+   "fieldname": "direct_inspection_typeeeeeeee",
+   "fieldtype": "Data",
+   "label": "Inspection Type ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_current_siteeeeeeeee",
+   "fieldtype": "Link",
+   "label": "Current Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "column_break_unwi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "direct_inspection_dateeeeeeee",
+   "fieldtype": "Date",
+   "label": "Inspection Date  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_stone_numberrrrrrrrrr",
+   "fieldtype": "Link",
+   "label": "Stone Number",
+   "options": "Block"
+  },
+  {
+   "fieldname": "column_break_qagf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "direct_inspected_byyyyyyyy",
+   "fieldtype": "Data",
+   "label": "Inspected By  ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_projectttttttt",
+   "fieldtype": "Link",
+   "label": "Project  ",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "section_break_lhrw",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "quessssssss",
+   "fieldtype": "Table",
+   "label": "Ques",
+   "options": "Question Bank"
+  },
+  {
+   "fieldname": "section_break_dlhi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "inspection_status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Inspection Status",
+   "options": "\nDraft\nUnder Inspection\nCompleted"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Amended From",
+   "options": "Inspection Demo",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nPass with alter size\nReject and do not bill\nReject and bill",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statuss",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nRepair\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statusss",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nRepair\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statussss",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nRepair\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statussssss",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nRepair\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "statusssssss",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nPass\nRepair\nReject",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_jktu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_htki",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dvsd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_hmer",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_kyby",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_vfxp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_etar",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "sompura",
+   "fieldtype": "Check",
+   "label": "Is sompura their?"
+  },
+  {
+   "default": "0",
+   "fieldname": "regional_manager",
+   "fieldtype": "Check",
+   "label": "Is regional manager their?"
+  },
+  {
+   "fieldname": "rejection_evaluation",
+   "fieldtype": "Link",
+   "label": "Rejection Evaluation",
+   "options": "Rejection Evaluation",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-08 16:38:29.148313",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Inspection Demo",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Block Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 2,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Pre Carving Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Block Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Pre Carving Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 3,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Post Carving Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 6,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Carving Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 7,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Polishing Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 4,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Post Polishing Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 5,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Carving Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 5,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Polishing Inspection Supervisor",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Post Carving Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Carving Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Direct Post Polishing Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Post Polishing Inspection Supervisor",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,176 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-09-22 10:12:11.313500",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "stone_code",
+  "stone_name",
+  "range",
+  "is_cut",
+  "cutting_planning_id",
+  "l1",
+  "l2",
+  "column_break_ribh",
+  "b1",
+  "b2",
+  "h1",
+  "h2",
+  "volume",
+   "selection_id",
+  "lot_id",
+  "stone_id",
+  "order_id",
+  "carving_id",
+  "polishing_id",
+  "block_order_id",
+  "lot_order_id"
+
+ ],
+ "fields": [
+  {
+   "fieldname": "stone_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Code"
+  },
+  {
+   "fieldname": "stone_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone Name"
+  },
+  {
+   "fieldname": "l1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "L1"
+  },
+  {
+   "fieldname": "l2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "L2"
+  },
+  {
+   "fieldname": "b1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "B1"
+  },
+  {
+   "fieldname": "b2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "B2"
+  },
+  {
+   "fieldname": "h1",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "H1"
+  },
+  {
+   "fieldname": "h2",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "H2"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Volume",
+   "read_only": 1
+  },
+  {
+   "fieldname": "range",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Range"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_cut",
+   "fieldtype": "Data",
+   "label": "Is Cut",
+   "hidden": 1
+  },
+
+  {
+   "fieldname": "cutting_planning_id",
+   "fieldtype": "Data",
+   "label": "Cutting Planning ID",
+   "hidden": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "stone_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Stone"
+  },
+  {
+   "fieldname": "order_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Order"
+  },
+  {
+   "fieldname": "selection_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Selection "
+  },
+  {
+   "fieldname": "lot_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Lot"
+  },
+    {
+     "fieldname": "carving_id",
+     "fieldtype": "Data",
+     "hidden": 1,
+     "label": "Carving"
+    },
+    {
+     "fieldname": "polishing_id",
+     "fieldtype": "Data",
+     "hidden": 1,
+     "label": "Polishing"
+    },
+    {
+     "fieldname": "block_order_id",
+     "fieldtype": "Data",
+     "hidden": 1,
+     "label": "Block Order"
+    },
+    {
+     "fieldname": "lot_order_id",
+     "fieldtype": "Data",
+     "hidden": 1,
+     "label": "Lot Order"
+    },
+  {
+   "fieldname": "column_break_ribh",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-17 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List Creation Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

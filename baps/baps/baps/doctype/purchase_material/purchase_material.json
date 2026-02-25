@@ -1,0 +1,667 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-13 13:00:38.368859",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "direct_cut_stone",
+  "column_break_cvhk",
+  "direct_carved_stone",
+  "column_break_vyub",
+  "direct_polish_stone",
+  "column_break_icyb",
+  "block_order",
+  "column_break_zryh",
+  "lot_order",
+  "direct_cut_stone_section",
+  "date",
+  "column_break_qgmt",
+  "trade_partner",
+  "column_break_bkxl",
+  "material_type",
+  "column_break_opum",
+  "baps_project",
+  "column_break_rwch",
+  "show_stones",
+  "section_break_mjkj",
+  "direct_cut_stone_details",
+  "ordered_by",
+  "remarks",
+  "purchase_material_workflow",
+  "order_id",
+  "direct_carved_stone_section",
+  "date1",
+  "column_break_dppc",
+  "trade_partnerr",
+  "column_break_pxta",
+  "material_typee",
+  "column_break_qwaq",
+  "baps_projectt",
+  "column_break_utdp",
+  "show_stoness",
+  "section_break_omra",
+  "direct_carved_stone_details",
+  "ordered_byy",
+  "remarkss",
+  "purchase_material_workfloww",
+  "carving_id",
+  "direct_polish_stone_section",
+  "dateee",
+  "column_break_qibj",
+  "trade_partnerrr",
+  "column_break_shbp",
+  "material_typeee",
+  "column_break_kugx",
+  "baps_projecttt",
+  "column_break_ojue",
+  "show_stonesss",
+  "section_break_vnpr",
+  "direct_polish_stone_details",
+  "ordered_byyy",
+  "remarksss",
+  "purchase_material_workflowww",
+  "polishing_id",
+  "block_orderr_section",
+  "dateeee",
+  "column_break_yhru",
+  "trade_partnerrrr",
+  "column_break_wcpm",
+  "site",
+  "section_break_yoyc",
+  "baps_projectttt",
+  "column_break_teoh",
+  "item_type",
+  "column_break_ycac",
+  "ordered_byyyy",
+  "section_break_ekeb",
+  "invoice_to_be_paid_after_block_receipt",
+  "section_break_laae",
+  "order_detail",
+  "remarkssss",
+  "block_order_workflow",
+  "block_order_id",
+  "lot_orderr",
+  "dateeeee",
+  "column_break_zikn",
+  "trade_partnerrrrr",
+  "column_break_ftnv",
+  "sitee",
+  "section_break_wnhc",
+  "baps_projecttttt",
+  "column_break_fvcp",
+  "item_typee",
+  "column_break_uhuo",
+  "ordered_byyyyy",
+  "section_break_ohdy",
+  "invoice_to_be_paid_after_block_receiptt",
+  "section_break_tdyo",
+  "volume",
+  "section_break_dxlp",
+  "remarksssss",
+  "lot_order_id",
+  "lot_order_workflow",
+  "section_break_usej",
+  "active_section"
+ ],
+ "fields": [
+  {
+   "fieldname": "direct_cut_stone",
+   "fieldtype": "Button",
+   "label": "Direct Cut Stone"
+  },
+  {
+   "fieldname": "column_break_vyub",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "direct_carved_stone",
+   "fieldtype": "Button",
+   "label": "Direct Carved Stone"
+  },
+  {
+   "fieldname": "direct_cut_stone_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Direct Cut Stone"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_qgmt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_partner",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Trade Partner ",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_bkxl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Stone",
+   "fieldname": "material_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "column_break_opum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "section_break_mjkj",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "ordered_by",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ordered By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_polish_stone",
+   "fieldtype": "Button",
+   "label": "Direct Polish Stone"
+  },
+  {
+   "fieldname": "direct_carved_stone_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Direct Carved Stone"
+  },
+  {
+   "fieldname": "date1",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_dppc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_partnerr",
+   "fieldtype": "Link",
+   "label": "Trade Partner ",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_pxta",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Stone",
+   "fieldname": "material_typee",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "column_break_qwaq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "baps_projectt",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "section_break_omra",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "direct_carved_stone_details",
+   "fieldtype": "Table",
+   "label": "Direct Carved Stone Details",
+   "options": "Direct Carved Stone Details"
+  },
+  {
+   "fieldname": "remarkss",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "ordered_byy",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ordered By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "carving_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Carving ID",
+   "options": "Purchase Material",
+   "read_only": 1
+  },
+  {
+   "fieldname": "direct_polish_stone_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Direct Polish Stone"
+  },
+  {
+   "fieldname": "dateee",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_qibj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_partnerrr",
+   "fieldtype": "Link",
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_shbp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Stone",
+   "fieldname": "material_typeee",
+   "fieldtype": "Link",
+   "label": "Material Type",
+   "options": "Material Type"
+  },
+  {
+   "fieldname": "column_break_kugx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "baps_projecttt",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "section_break_vnpr",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "direct_polish_stone_details",
+   "fieldtype": "Table",
+   "label": "Direct Polish Stone Details",
+   "options": "Direct Polish Stone Details"
+  },
+  {
+   "fieldname": "remarksss",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "ordered_byyy",
+   "fieldtype": "Data",
+   "label": "Ordered by",
+   "read_only": 1
+  },
+  {
+   "fieldname": "polishing_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Polishing ID",
+   "options": "Purchase Material",
+   "read_only": 1
+  },
+  {
+   "fieldname": "dateeee",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_yhru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_partnerrrr",
+   "fieldtype": "Link",
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_wcpm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "site",
+   "fieldtype": "Link",
+   "label": "Receiving Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "section_break_yoyc",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "baps_projectttt",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "column_break_teoh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_type",
+   "fieldtype": "Select",
+   "label": "Item Type",
+   "options": "\nBlock\nWood"
+  },
+  {
+   "fieldname": "column_break_ycac",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ordered_byyyy",
+   "fieldtype": "Data",
+   "label": "Ordered By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ekeb",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_to_be_paid_after_block_receipt",
+   "fieldtype": "Check",
+   "label": "Invoice to be paid after block receipt"
+  },
+  {
+   "fieldname": "section_break_laae",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "order_detail",
+   "fieldtype": "Table",
+   "label": "Order Detail",
+   "options": "block order detail"
+  },
+  {
+   "fieldname": "remarkssss",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "block_order",
+   "fieldtype": "Button",
+   "label": "Block Order"
+  },
+  {
+   "fieldname": "block_order_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Block Order ID",
+   "options": "Purchase Material",
+   "read_only": 1
+  },
+  {
+   "fieldname": "block_orderr_section",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Block Order"
+  },
+  {
+   "fieldname": "dateeeee",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "column_break_zikn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "trade_partnerrrrr",
+   "fieldtype": "Link",
+   "label": "Trade Partner",
+   "options": "Trade Partner"
+  },
+  {
+   "fieldname": "column_break_ftnv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sitee",
+   "fieldtype": "Link",
+   "label": "Receiving Site",
+   "options": "Site"
+  },
+  {
+   "fieldname": "baps_projecttttt",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Baps Project"
+  },
+  {
+   "fieldname": "item_typee",
+   "fieldtype": "Select",
+   "label": "Item Type",
+   "options": "\nBlock\nWood"
+  },
+  {
+   "fieldname": "ordered_byyyyy",
+   "fieldtype": "Data",
+   "label": "Ordered By",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lot_order",
+   "fieldtype": "Button",
+   "label": "Lot Order"
+  },
+  {
+   "fieldname": "lot_orderr",
+   "fieldtype": "Section Break",
+   "hidden": 1,
+   "label": "Lot Order"
+  },
+  {
+   "default": "0",
+   "fieldname": "invoice_to_be_paid_after_block_receiptt",
+   "fieldtype": "Check",
+   "label": "Invoice to be paid after block receipt"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Volume"
+  },
+  {
+   "fieldname": "remarksssss",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "lot_order_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Lot Order ID"
+  },
+  {
+   "fieldname": "column_break_cvhk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "block_order_workflow",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Block Order Workflow",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "lot_order_workflow",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Lot Order Workflow",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "column_break_icyb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zryh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_dxlp",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "section_break_tdyo",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "section_break_wnhc",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "column_break_fvcp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uhuo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ohdy",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "column_break_rwch",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "show_stones",
+   "fieldtype": "Button",
+   "label": "Show Stones"
+  },
+  {
+   "fieldname": "column_break_utdp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ojue",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "show_stoness",
+   "fieldtype": "Button",
+   "label": "Show Stones"
+  },
+  {
+   "fieldname": "show_stonesss",
+   "fieldtype": "Button",
+   "label": "Show Stones"
+  },
+  {
+   "fieldname": "purchase_material_workflow",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Purchase Material Workflow",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "purchase_material_workfloww",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Purchase Material Workflow",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "purchase_material_workflowww",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Purchase Material Workflow",
+   "options": "Workflow State"
+  },
+  {
+   "fieldname": "direct_cut_stone_details",
+   "fieldtype": "Table",
+   "label": "Direct Cut Stone Details",
+   "options": "Direct Cut Stone Details"
+  },
+  {
+   "fieldname": "section_break_usej",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "active_section",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Active Section"
+  },
+  {
+   "fieldname": "order_id",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Order ID",
+   "options": "Purchase Material"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-01 11:03:09.738819",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Purchase Material",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

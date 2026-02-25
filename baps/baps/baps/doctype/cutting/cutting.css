@@ -1,0 +1,12 @@
+/* Hide Add Row button in Cutting Stones table */
+[data-doctype="Cutting"] [data-fieldname="stones_table"] .grid-add-row,
+[data-doctype="Cutting"] [data-fieldname="stones_table"] .grid-footer {
+    display: none !important;
+}
+
+/* Additional selector to ensure button is hidden */
+[data-doctype="Cutting"] .frappe-control[data-fieldname="stones_table"] .grid-add-row,
+[data-doctype="Cutting"] .frappe-control[data-fieldname="stones_table"] .grid-footer {
+    display: none !important;
+    visibility: hidden !important;
+}

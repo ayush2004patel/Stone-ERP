@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 22:10:14.373206",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_type",
+  "block_number",
+  "stone_number",
+  "box_number",
+  "quantity_missing",
+  "reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Material Type",
+   "options": "\nBlock\nStone\nBox"
+  },
+  {
+   "depends_on": "eval: doc.material_type == 'Block'",
+   "fieldname": "block_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block ID"
+  },
+  {
+   "depends_on": "eval: doc.material_type == 'Stone'",
+   "fieldname": "stone_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stone ID"
+  },
+  {
+   "depends_on": "eval: doc.material_type == 'Box'",
+   "fieldname": "box_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Box ID"
+  },
+  {
+   "fieldname": "quantity_missing",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Qty Missing"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Reason"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-09-01 07:07:53.048325",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Missing Material List",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

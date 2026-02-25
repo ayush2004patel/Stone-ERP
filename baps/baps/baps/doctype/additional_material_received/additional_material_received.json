@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-29 14:06:15.250879",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_type",
+  "item_number",
+  "baps_project",
+  "accept",
+  "reject",
+  "decision_status"
+ ],
+ "fields": [
+  {
+   "fetch_from": "item_number.baps_project",
+   "fieldname": "baps_project",
+   "fieldtype": "Link",
+   "label": "Baps Project",
+   "options": "Baps Project"
+  },
+  {
+   "depends_on": "eval:test",
+   "fieldname": "item_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Type",
+   "mandatory_depends_on": "eval:doc.test",
+   "options": "Item Type"
+  },
+  {
+   "depends_on": "eval:test",
+   "fieldname": "item_number",
+   "fieldtype": "Data",
+   "label": "Item Number",
+   "mandatory_depends_on": "eval:doc.test"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Transportation Sender\") && (!doc.decision_status || doc.decision_status==\"Pending\")",
+   "fieldname": "accept",
+   "fieldtype": "Button",
+   "label": "Accept",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") && doc.decision_status && doc.decision_status != \"Pending\"\n"
+  },
+  {
+   "depends_on": "eval:frappe.user.has_role(\"Transportation Sender\") && (!doc.decision_status || doc.decision_status==\"Pending\")",
+   "fieldname": "reject",
+   "fieldtype": "Button",
+   "label": "Reject",
+   "read_only_depends_on": "eval:frappe.user.has_role(\"Transportation Receiver\") && doc.decision_status && doc.decision_status != \"Pending\"\n"
+  },
+  {
+   "default": "Pending",
+   "fieldname": "decision_status",
+   "fieldtype": "Select",
+   "label": "Decision Status",
+   "options": "Pending\nAccepted\nRejected",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-11-21 16:06:31.053032",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Additional Material Received",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

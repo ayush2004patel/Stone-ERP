@@ -1,0 +1,50 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2025-10-30 11:35:53.026994",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 3,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Size List Creation\"],[\"prep_date\",\"Size List Creation\"],[\"main_part\",\"Size List Creation\"],[\"stone_type\",\"Size List Creation\"],[\"project_name\",\"Size List Creation\"],[\"sub_part\",\"Size List Creation\"],[\"b1\",\"Size List Creation Item\"],[\"b2\",\"Size List Creation Item\"],[\"h1\",\"Size List Creation Item\"],[\"h2\",\"Size List Creation Item\"],[\"idx\",\"Size List Creation Item\"],[\"l1\",\"Size List Creation Item\"],[\"l2\",\"Size List Creation Item\"],[\"stone_code\",\"Size List Creation Item\"],[\"stone_name\",\"Size List Creation Item\"],[\"volume\",\"Size List Creation Item\"]],\"order_by\":\"`tabSize List Creation`.`modified` desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"prep_date\":120,\"main_part\":120,\"stone_type\":120,\"project_name\":120,\"sub_part\":120,\"Size List Creation Item:b1\":120,\"Size List Creation Item:b2\":120,\"Size List Creation Item:h1\":120,\"Size List Creation Item:h2\":120,\"Size List Creation Item:idx\":120,\"Size List Creation Item:l1\":120,\"Size List Creation Item:l2\":120,\"Size List Creation Item:stone_code\":120,\"Size List Creation Item:stone_name\":120,\"Size List Creation Item:volume\":120},\"group_by\":null}",
+ "letterhead": null,
+ "modified": "2025-10-31 16:08:57.267548",
+ "modified_by": "Administrator",
+ "module": "Baps",
+ "name": "Size List",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Size List Creation",
+ "report_name": "Size List",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Quality Manager"
+  },
+  {
+   "role": "Size List Manager"
+  },
+  {
+   "role": "Size List Data Entry Operator"
+  },
+  {
+   "role": "Size List Data Checker"
+  },
+  {
+   "role": "Project Manager"
+  },
+  {
+   "role": "Size List Project Manager"
+  },
+  {
+   "role": "Master Editor"
+  }
+ ],
+ "timeout": 0
+}
